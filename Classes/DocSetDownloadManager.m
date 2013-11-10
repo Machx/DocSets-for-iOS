@@ -266,7 +266,7 @@
 
 @implementation DocSetDownload
 
-@synthesize connection=_connection, URL=_URL, fileHandle=_fileHandle, downloadTargetPath=_downloadTargetPath, extractedPath=_extractedPath, progress=_progress, status=_status, shouldCancelExtracting = _shouldCancelExtracting, type = _type;
+@synthesize connection=_connection, URL=_URL, fileHandle=_fileHandle, downloadTargetPath=_downloadTargetPath, extractedPath=_extractedPath, progress=_progress, status=_status, shouldCancelExtracting = _shouldCancelExtracting;
 @synthesize downloadSize, bytesDownloaded;
 
 - (id)initWithURL:(NSURL *)URL
