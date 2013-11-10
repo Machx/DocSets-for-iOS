@@ -1,13 +1,13 @@
 //
-//  GenericDocSet.m
+//  AppleDocSet.h
 //  DocSets
 //
 //  Created by Dennis Oberhoff on 10/11/13.
 //
 //
 
-#import "GenericDocSet.h"
+#import "DocSet.h"
 
-@implementation GenericDocSet
+@interface AppleDocSet : DocSet
 
 @end
