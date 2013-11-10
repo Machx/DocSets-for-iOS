@@ -335,6 +335,7 @@
 				self.detailViewController = [[DetailViewController alloc] initWithNibName:nil bundle:nil];
 				[self.navigationController pushViewController:self.detailViewController animated:YES];
 				[self.detailViewController showToken:result inDocSet:docSet];
+            
 			}
 		} else {
 			NSManagedObject *node = [[docSet managedObjectContext] existingObjectWithID:[result objectForKey:@"objectID"] error:NULL];
@@ -355,13 +356,16 @@
 		childViewController.detailViewController = self.detailViewController;
 		[self.navigationController pushViewController:childViewController animated:YES];
 	} else {
-		if ([[node valueForKey:@"installDomain"] intValue] > 1) {
+        
+        NSInteger installDomain = [[node valueForKey:@"installDomain"] intValue];
+		if (installDomain > 1) {
 			NSURL *webURL = [docSet webURLForNode:node];
 			if (webURL) {
 				[[UIApplication sharedApplication] openURL:webURL];
 			}
 			return;
 		}
+
 		if ([[UIDevice currentDevice] userInterfaceIdiom] == UIUserInterfaceIdiomPad) {
 			[self.detailViewController showNode:node inDocSet:docSet];
 		} else {

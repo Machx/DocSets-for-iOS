@@ -50,13 +50,13 @@
 
 @end
 
-
 typedef enum DocSetDownloadStatus {
 	DocSetDownloadStatusWaiting = 0,
 	DocSetDownloadStatusDownloading,
 	DocSetDownloadStatusExtracting,
 	DocSetDownloadStatusFinished
 } DocSetDownloadStatus;
+
 
 @interface DocSetDownload : NSObject <NSURLConnectionDelegate, NSURLConnectionDataDelegate> {
 
@@ -66,7 +66,7 @@ typedef enum DocSetDownloadStatus {
 	NSFileHandle *_fileHandle;
 	NSString *_downloadTargetPath;
 	NSString *_extractedPath;
-	
+    
 	DocSetDownloadStatus _status;
 	float _progress;
     BOOL _shouldCancelExtracting;

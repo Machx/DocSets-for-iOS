@@ -56,23 +56,10 @@
 		portraitToolbarItems = [NSArray arrayWithObjects:browseButtonItem, spaceItem, backButtonItem, spaceItem, forwardButtonItem, flexSpace, bookmarksButtonItem, spaceItem, actionButtonItem, spaceItem, outlineButtonItem, nil];
 		landscapeToolbarItems = [NSArray arrayWithObjects:backButtonItem, spaceItem, forwardButtonItem, flexSpace, bookmarksButtonItem, spaceItem, actionButtonItem, spaceItem, outlineButtonItem, nil];
 	}
-		
-	return self;
-}
-
-- (void)viewDidAppear:(BOOL)animated
-{
-	if ([[UIDevice currentDevice] userInterfaceIdiom] == UIUserInterfaceIdiomPhone && self.navigationController.toolbarHidden) {
-		[self.navigationController setToolbarHidden:NO animated:animated];
-	}
-}
-
-- (void)loadView
-{
-	[super loadView];
-	self.view.backgroundColor = [UIColor colorWithWhite:0.95 alpha:1.0];
-	
-	titleLabel = [[UILabel alloc] initWithFrame:CGRectMake(0, 0, 360, 34)];
+    
+    // moved this because it was nil
+    
+    titleLabel = [[UILabel alloc] initWithFrame:CGRectMake(0, 0, 360, 34)];
 	titleLabel.textColor = [UIColor colorWithRed:0.443 green:0.471 blue:0.502 alpha:1.0];
 	titleLabel.shadowColor = [UIColor whiteColor];
 	titleLabel.shadowOffset = CGSizeMake(0, 1);
@@ -108,6 +95,23 @@
 	coverView.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"whitey.png"]];
 	coverView.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight;
 	[self.view addSubview:coverView];
+		
+	return self;
+}
+
+- (void)viewDidAppear:(BOOL)animated
+{
+	if ([[UIDevice currentDevice] userInterfaceIdiom] == UIUserInterfaceIdiomPhone && self.navigationController.toolbarHidden) {
+		[self.navigationController setToolbarHidden:NO animated:animated];
+	}
+}
+
+
+- (void)loadView
+{
+	[super loadView];
+	self.view.backgroundColor = [UIColor colorWithWhite:0.95 alpha:1.0];
+	
 }
 
 - (void)docSetWillBeDeleted:(NSNotification *)notification
@@ -308,8 +312,8 @@
 {
 	self.docSet = set;
 	NSURL *URL = [self.docSet URLForNode:node];
-	
-	NSString *nodeAnchor = [node valueForKey:@"kAnchor"];
+    
+	NSString *nodeAnchor = [self.docSet anchorForNode:node];
 	if (nodeAnchor.length == 0) nodeAnchor = nil;
 	
 	//Handle soft redirects (they otherwise break the history):	
@@ -322,6 +326,7 @@
 			URL = [NSURL URLWithString:relativeRedirectPath relativeToURL:URL];
 		}
 	}
+    
 	[self openURL:URL withAnchor:nodeAnchor];
 }
 
@@ -383,12 +388,13 @@
 
 - (void)openURL:(NSURL *)URL withAnchor:(NSString *)anchor
 {
-	if (anchor) {
+	if (anchor != nil) {
 		NSURL *URLWithAnchor = [NSURL URLWithString:[[URL absoluteString] stringByAppendingFormat:@"#%@", anchor]];
 		[webView loadRequest:[NSURLRequest requestWithURL:URLWithAnchor]];
 	} else {
 		[webView loadRequest:[NSURLRequest requestWithURL:URL]];
 	}
+    
 	[self updateBackForwardButtons];
 	if ([self.parentViewController isKindOfClass:[SwipeSplitViewController class]]) {
 		[(SwipeSplitViewController *)self.parentViewController hideMasterViewControllerAnimated:YES];
@@ -412,25 +418,29 @@
 	[self updateBackForwardButtons];
 	if ([[URL scheme] isEqualToString:@"file"]) {
 		NSString *customCSS;
+        
 		if ([[UIDevice currentDevice] userInterfaceIdiom] == UIUserInterfaceIdiomPad) {
 			customCSS = @"<style>body { font-size: 16px !important; } pre { white-space: pre-wrap !important; }</style>";
 		} else {
 			customCSS = @"<meta name = \"viewport\" content = \"width = device-width, initial-scale=1.0\"><style>body { font-size: 15px !important; padding: 15px !important; } pre { white-space: pre-wrap !important; } h1 {font-size: 22px !important;} h2 { font-size: 20px !important; } h3 { font-size: 18px !important; } .dtsDocNumber {font-size: 22px !important;} .specbox { margin-left: 0 !important; } #feedbackForm { display: none; }</style>";
-		}
+		
+        }
 		NSString *html = [NSString stringWithContentsOfURL:URL encoding:NSUTF8StringEncoding error:NULL];
 		if ([[URL path] rangeOfString:@"__cached__"].location == NSNotFound) {
 			//Rewrite HTML to get rid of the JavaScript that redirects to the "touch-friendly" page:
 			NSScanner *scanner = [NSScanner scannerWithString:html];
 			NSRange scriptRange;
+            
 			if ([scanner scanUpToString:@"<script>String.prototype.cleanUpURL" intoString:NULL]) {
 				scriptRange.location = [scanner scanLocation];
 				[scanner scanString:@"<script>String.prototype.cleanUpURL" intoString:NULL];
 				[scanner scanUpToString:@"</script>" intoString:NULL];
 				[scanner scanString:@"</script>" intoString:NULL];
-				scriptRange.length = [scanner scanLocation] - scriptRange.location;
+                scriptRange.length = [scanner scanLocation] - scriptRange.location;
 			} else {
 				scriptRange = NSMakeRange(0, 0);
 			}
+            
 			if (scriptRange.length > 0) {
 				html = [html stringByReplacingCharactersInRange:scriptRange withString:customCSS];
 				//We need to write the modified html to a file for back/forward to work properly.
@@ -439,14 +449,17 @@
 				NSString *path = [URL path];
 				NSString *cachePath = [[path stringByDeletingPathExtension] stringByAppendingString:@"__cached__.html"];
 				NSURL *cacheURL = [NSURL fileURLWithPath:cachePath];
+                
 				if (URLAnchor) {
 					NSString *cacheURLString = [[cacheURL absoluteString] stringByAppendingFormat:@"%@", URLAnchor];
 					cacheURL = [NSURL URLWithString:cacheURLString];
-				}
+    
+                }
 				[html writeToURL:cacheURL atomically:YES encoding:NSUTF8StringEncoding error:NULL];
 				[webView loadRequest:[NSURLRequest requestWithURL:cacheURL]];
 				return NO;
 			}
+            
 		}
 		return YES;
 	} else if ([[URL scheme] hasPrefix:@"http"]) { //http or https

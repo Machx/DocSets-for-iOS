@@ -7,7 +7,9 @@
 //
 
 #import "DocSetDownloadManager.h"
-#import "DocSet.h"
+#import "AppleDepDocSet.h"
+#import "AppleDocSet.h"
+#import "DashDocSet.h"
 #import "xar.h"
 #include <sys/xattr.h>
 
@@ -57,7 +59,7 @@
 	
 	dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
 		
-		NSURL *availableDocSetsURL = [NSURL URLWithString:@"https://raw.github.com/omz/DocSets-for-iOS/master/Resources/AvailableDocSets.plist"];
+		NSURL *availableDocSetsURL = [NSURL URLWithString:@"https://raw.github.com/omz/DocSets-for-iOS/master/Resources/AvailableDocSet.plist"];
 		NSHTTPURLResponse *response = nil;
 		NSData *updatedDocSetsData = [NSURLConnection sendSynchronousRequest:[NSURLRequest requestWithURL:availableDocSetsURL] returningResponse:&response error:NULL];
 		if (response.statusCode == 200) {
@@ -84,15 +86,37 @@
 	NSString *docPath = [NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES) objectAtIndex:0];
 	NSArray *documents = [fm contentsOfDirectoryAtPath:docPath error:NULL];
 	NSMutableArray *loadedSets = [NSMutableArray array];
+    
 	for (NSString *path in documents) {
 		if ([[[path pathExtension] lowercaseString] isEqual:@"docset"]) {
 			NSString *fullPath = [docPath stringByAppendingPathComponent:path];
 			u_int8_t b = 1;
 			setxattr([fullPath fileSystemRepresentation], "com.apple.MobileBackup", &b, 1, 0, 0);
-			DocSet *docSet = [[DocSet alloc] initWithPath:fullPath];
-			if (docSet) [loadedSets addObject:docSet];
+            
+            DocSet *docSet;
+            
+            // ^(com.apple.adc.documentation.AppleiOS)(\d)\.(\d)(.iOSLibrary.docset)$
+            NSString *pattern = @"^(com.apple.adc.documentation.AppleiOS)(\\d)\\.(\\d)(.iOSLibrary.docset)$";
+            NSRegularExpression *regex = [NSRegularExpression regularExpressionWithPattern:pattern options:NSRegularExpressionCaseInsensitive error:nil];
+            NSTextCheckingResult *docSetMatch = [regex firstMatchInString:path options:0 range:NSMakeRange(0, path.length)];
+            if (docSetMatch.numberOfRanges == 5) {
+                NSInteger version = [[path substringWithRange:[docSetMatch rangeAtIndex:2]] integerValue];
+                if (version <= 6) {
+                    docSet = [[AppleDepDocSet alloc] initWithPath:fullPath];
+                } else {
+                    docSet = [[AppleDocSet alloc] initWithPath:fullPath];
+                }
+            } else {
+                // more comparision for other types
+                docSet = [[DashDocSet alloc] initWithPath:fullPath];
+            }
+            
+            if (docSet) [loadedSets addObject:docSet];
+
 		}
 	}
+
+
 	self.downloadedDocSets = [NSArray arrayWithArray:loadedSets];
 	self.downloadedDocSetNames = [NSSet setWithArray:documents];
 	[[NSNotificationCenter defaultCenter] postNotificationName:DocSetDownloadManagerUpdatedDocSetsNotification object:self];
@@ -186,15 +210,16 @@
 	
 	NSString *docPath = [NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES) objectAtIndex:0];
 	NSArray *extractedItems = [[NSFileManager defaultManager] contentsOfDirectoryAtPath:download.extractedPath error:NULL];
-	for (NSString *file in extractedItems) {
-		if ([[[file pathExtension] lowercaseString] isEqualToString:@"docset"]) {
-			NSString *fullPath = [download.extractedPath stringByAppendingPathComponent:file];
-			NSString *targetPath = [docPath stringByAppendingPathComponent:file];
-			[[NSFileManager defaultManager] moveItemAtPath:fullPath toPath:targetPath error:NULL];
-			NSLog(@"Moved downloaded docset to %@", targetPath);
-		}
-	}
-	
+    
+    for (NSString *file in extractedItems) {
+        if ([[[file pathExtension] lowercaseString] isEqualToString:@"docset"]) {
+            NSString *fullPath = [download.extractedPath stringByAppendingPathComponent:file];
+            NSString *targetPath = [docPath stringByAppendingPathComponent:file];
+            [[NSFileManager defaultManager] moveItemAtPath:fullPath toPath:targetPath error:NULL];
+            NSLog(@"Moved downloaded docset to %@", targetPath);
+        }
+    }
+    
 	[self reloadDownloadedDocSets];
 	
 	[_downloadsByURL removeObjectForKey:[download.URL absoluteString]];	
@@ -241,7 +266,7 @@
 
 @implementation DocSetDownload
 
-@synthesize connection=_connection, URL=_URL, fileHandle=_fileHandle, downloadTargetPath=_downloadTargetPath, extractedPath=_extractedPath, progress=_progress, status=_status, shouldCancelExtracting = _shouldCancelExtracting;
+@synthesize connection=_connection, URL=_URL, fileHandle=_fileHandle, downloadTargetPath=_downloadTargetPath, extractedPath=_extractedPath, progress=_progress, status=_status, shouldCancelExtracting = _shouldCancelExtracting, type = _type;
 @synthesize downloadSize, bytesDownloaded;
 
 - (id)initWithURL:(NSURL *)URL

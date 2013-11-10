@@ -6,8 +6,8 @@
 //
 //
 
-#import "GenericDocSet.h"
+#import "DocSet.h"
 
-@interface DashDocSet : GenericDocSet
+@interface DashDocSet : DocSet <DocSet>
 
 @end

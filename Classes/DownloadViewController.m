@@ -167,7 +167,7 @@
 						   otherButtonTitles:nil] show];
 	} else {
 		NSString *docSetURL = [downloadInfo objectForKey:@"URL"];
-		[[DocSetDownloadManager sharedDownloadManager] downloadDocSetAtURL:docSetURL];
+        [[DocSetDownloadManager sharedDownloadManager] downloadDocSetAtURL:docSetURL];
 	}
 }
 

@@ -134,7 +134,7 @@
     }
     
 	DocSet *docSet = [[[DocSetDownloadManager sharedDownloadManager] downloadedDocSets] objectAtIndex:indexPath.row];
-	cell.textLabel.text = docSet.title;
+    cell.textLabel.text = docSet.title;
 	cell.detailTextLabel.text = docSet.copyright;
 	
 	return cell;

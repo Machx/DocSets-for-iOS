@@ -104,7 +104,6 @@
 		7FEFBF44156D52B400C75316 /* CloudLog.png in Resources */ = {isa = PBXBuildFile; fileRef = 7FEFBF42156D52B400C75316 /* CloudLog.png */; };
 		7FEFBF45156D52B400C75316 /* CloudLog@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 7FEFBF43156D52B400C75316 /* CloudLog@2x.png */; };
 		7FF7040512AB0CE3001FF09F /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7FF7040412AB0CE3001FF09F /* CoreData.framework */; };
-		7FF706CA12ABE88A001FF09F /* DocSet.m in Sources */ = {isa = PBXBuildFile; fileRef = 7FF706C912ABE88A001FF09F /* DocSet.m */; };
 		7FF706D512ABEF76001FF09F /* DocSetViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7FF706D412ABEF76001FF09F /* DocSetViewController.m */; };
 		7FF7072212ABF8AB001FF09F /* ReferenceIcon.png in Resources */ = {isa = PBXBuildFile; fileRef = 7FF7072112ABF8AB001FF09F /* ReferenceIcon.png */; };
 		7FF708BC12AC3ED6001FF09F /* Class.png in Resources */ = {isa = PBXBuildFile; fileRef = 7FF708AF12AC3ED6001FF09F /* Class.png */; };
@@ -125,6 +124,10 @@
 		7FF70B5412AD15B7001FF09F /* Back.png in Resources */ = {isa = PBXBuildFile; fileRef = 7FF70B5212AD15B7001FF09F /* Back.png */; };
 		7FF70B5512AD15B7001FF09F /* Forward.png in Resources */ = {isa = PBXBuildFile; fileRef = 7FF70B5312AD15B7001FF09F /* Forward.png */; };
 		7FF70C1512AD3FB8001FF09F /* libz.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 7FF70C1412AD3FB8001FF09F /* libz.dylib */; };
+		E1084E78182F9A7900E60D1C /* AppleDocSet.m in Sources */ = {isa = PBXBuildFile; fileRef = E1084E77182F9A7900E60D1C /* AppleDocSet.m */; };
+		E178362E182E7890003FEE28 /* AppleDepDocSet.m in Sources */ = {isa = PBXBuildFile; fileRef = E178362D182E7890003FEE28 /* AppleDepDocSet.m */; };
+		E1783631182E789B003FEE28 /* DashDocSet.m in Sources */ = {isa = PBXBuildFile; fileRef = E1783630182E789B003FEE28 /* DashDocSet.m */; };
+		E1783635182F961B003FEE28 /* DocSet.m in Sources */ = {isa = PBXBuildFile; fileRef = E1783634182F961A003FEE28 /* DocSet.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -265,8 +268,6 @@
 		7FEFBF42156D52B400C75316 /* CloudLog.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = CloudLog.png; sourceTree = "<group>"; };
 		7FEFBF43156D52B400C75316 /* CloudLog@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "CloudLog@2x.png"; sourceTree = "<group>"; };
 		7FF7040412AB0CE3001FF09F /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = System/Library/Frameworks/CoreData.framework; sourceTree = SDKROOT; };
-		7FF706C812ABE88A001FF09F /* DocSet.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DocSet.h; sourceTree = "<group>"; };
-		7FF706C912ABE88A001FF09F /* DocSet.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DocSet.m; sourceTree = "<group>"; };
 		7FF706D312ABEF76001FF09F /* DocSetViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DocSetViewController.h; sourceTree = "<group>"; };
 		7FF706D412ABEF76001FF09F /* DocSetViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DocSetViewController.m; sourceTree = "<group>"; };
 		7FF7072112ABF8AB001FF09F /* ReferenceIcon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = ReferenceIcon.png; sourceTree = "<group>"; };
@@ -289,6 +290,14 @@
 		7FF70B5212AD15B7001FF09F /* Back.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Back.png; sourceTree = "<group>"; };
 		7FF70B5312AD15B7001FF09F /* Forward.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Forward.png; sourceTree = "<group>"; };
 		7FF70C1412AD3FB8001FF09F /* libz.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libz.dylib; path = usr/lib/libz.dylib; sourceTree = SDKROOT; };
+		E1084E76182F9A7900E60D1C /* AppleDocSet.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AppleDocSet.h; sourceTree = "<group>"; };
+		E1084E77182F9A7900E60D1C /* AppleDocSet.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AppleDocSet.m; sourceTree = "<group>"; };
+		E178362C182E7890003FEE28 /* AppleDepDocSet.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AppleDepDocSet.h; sourceTree = "<group>"; };
+		E178362D182E7890003FEE28 /* AppleDepDocSet.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AppleDepDocSet.m; sourceTree = "<group>"; };
+		E178362F182E789B003FEE28 /* DashDocSet.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DashDocSet.h; sourceTree = "<group>"; };
+		E1783630182E789B003FEE28 /* DashDocSet.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DashDocSet.m; sourceTree = "<group>"; };
+		E1783633182F961A003FEE28 /* DocSet.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DocSet.h; sourceTree = "<group>"; };
+		E1783634182F961A003FEE28 /* DocSet.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DocSet.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -460,12 +469,11 @@
 			children = (
 				7FDB349D1540D38800A4AF5F /* NSString+RelativePath.h */,
 				7FDB349E1540D38900A4AF5F /* NSString+RelativePath.m */,
-				7FF706C812ABE88A001FF09F /* DocSet.h */,
-				7FF706C912ABE88A001FF09F /* DocSet.m */,
 				7FACA8EB14CC371C00BADCC8 /* DocSetDownloadManager.h */,
 				7FACA8EC14CC371C00BADCC8 /* DocSetDownloadManager.m */,
 				7FEFBF2A156B619D00C75316 /* BookmarksManager.h */,
 				7FEFBF2B156B619D00C75316 /* BookmarksManager.m */,
+				E1084E79182FCF3900E60D1C /* DocSet */,
 			);
 			name = Model;
 			sourceTree = "<group>";
@@ -608,6 +616,21 @@
 			name = "Token Icons";
 			sourceTree = "<group>";
 		};
+		E1084E79182FCF3900E60D1C /* DocSet */ = {
+			isa = PBXGroup;
+			children = (
+				E1783633182F961A003FEE28 /* DocSet.h */,
+				E1783634182F961A003FEE28 /* DocSet.m */,
+				E1084E76182F9A7900E60D1C /* AppleDocSet.h */,
+				E1084E77182F9A7900E60D1C /* AppleDocSet.m */,
+				E178362C182E7890003FEE28 /* AppleDepDocSet.h */,
+				E178362D182E7890003FEE28 /* AppleDepDocSet.m */,
+				E178362F182E789B003FEE28 /* DashDocSet.h */,
+				E1783630182E789B003FEE28 /* DashDocSet.m */,
+			);
+			name = DocSet;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -635,6 +658,16 @@
 			isa = PBXProject;
 			attributes = {
 				LastUpgradeCheck = 0430;
+				TargetAttributes = {
+					1D6058900D05DD3D006BFB54 = {
+						DevelopmentTeam = YE33ZK7Z99;
+						SystemCapabilities = {
+							com.apple.InterAppAudio = {
+								enabled = 0;
+							};
+						};
+					};
+				};
 			};
 			buildConfigurationList = C01FCF4E08A954540054247B /* Build configuration list for PBXProject "DocSets" */;
 			compatibilityVersion = "Xcode 3.2";
@@ -747,12 +780,12 @@
 				1D3623260D0F684500981E51 /* DocSetsAppDelegate.m in Sources */,
 				2804200B108E984D000629CD /* RootViewController.m in Sources */,
 				2804200C108E984D000629CD /* DetailViewController.m in Sources */,
-				7FF706CA12ABE88A001FF09F /* DocSet.m in Sources */,
 				7FF706D512ABEF76001FF09F /* DocSetViewController.m in Sources */,
 				7FF70A5612ACE3A8001FF09F /* OutlineViewController.m in Sources */,
 				7FACA8ED14CC371C00BADCC8 /* DocSetDownloadManager.m in Sources */,
 				7FACA8F014CC385D00BADCC8 /* DownloadViewController.m in Sources */,
 				7F8889B414CDEB69007604D7 /* SwipeSplitViewController.m in Sources */,
+				E1084E78182F9A7900E60D1C /* AppleDocSet.m in Sources */,
 				7F1D42C514D1624F00A85CB3 /* main.m in Sources */,
 				7F1D42F914D1632700A85CB3 /* archive.c in Sources */,
 				7F1D42FA14D1632700A85CB3 /* arcmod.c in Sources */,
@@ -764,13 +797,16 @@
 				7F1D430014D1632700A85CB3 /* err.c in Sources */,
 				7F1D430114D1632700A85CB3 /* ext2.c in Sources */,
 				7F1D430214D1632700A85CB3 /* fbsdattr.c in Sources */,
+				E178362E182E7890003FEE28 /* AppleDepDocSet.m in Sources */,
 				7F1D430314D1632700A85CB3 /* filetree.c in Sources */,
 				7F1D430414D1632700A85CB3 /* hash.c in Sources */,
+				E1783631182E789B003FEE28 /* DashDocSet.m in Sources */,
 				7F1D430514D1632700A85CB3 /* io.c in Sources */,
 				7F1D430614D1632700A85CB3 /* linuxattr.c in Sources */,
 				7F1D430714D1632700A85CB3 /* macho.c in Sources */,
 				7F1D430814D1632700A85CB3 /* script.c in Sources */,
 				7F1D430914D1632700A85CB3 /* signature.c in Sources */,
+				E1783635182F961B003FEE28 /* DocSet.m in Sources */,
 				7F1D430A14D1632700A85CB3 /* stat.c in Sources */,
 				7F1D430B14D1632700A85CB3 /* subdoc.c in Sources */,
 				7F1D430C14D1632700A85CB3 /* util.c in Sources */,
@@ -792,6 +828,8 @@
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				CLANG_ENABLE_OBJC_ARC = YES;
 				CODE_SIGN_ENTITLEMENTS = DocSets.entitlements;
+				CODE_SIGN_IDENTITY = "iPhone Developer: Dennis Oberhoff (34UJY3FWG2)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				COPY_PHASE_STRIP = NO;
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_OPTIMIZATION_LEVEL = 0;
@@ -803,6 +841,7 @@
 					"${SDKROOT}/usr/include/libxml2/**",
 				);
 				INFOPLIST_FILE = Resources/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 5.0;
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
 					"\"$(SDKROOT)/usr/lib/system\"",
@@ -810,6 +849,7 @@
 					"\"$(SRCROOT)/OtherSources/lib\"",
 				);
 				PRODUCT_NAME = DocSets;
+				PROVISIONING_PROFILE = "";
 				VALID_ARCHS = armv7;
 			};
 			name = Debug;
@@ -820,6 +860,8 @@
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				CLANG_ENABLE_OBJC_ARC = YES;
 				CODE_SIGN_ENTITLEMENTS = DocSets.entitlements;
+				CODE_SIGN_IDENTITY = "iPhone Developer: Dennis Oberhoff (34UJY3FWG2)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				COPY_PHASE_STRIP = YES;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = OtherSources/DocSets_Prefix.pch;
@@ -829,6 +871,7 @@
 					"${SDKROOT}/usr/include/libxml2/**",
 				);
 				INFOPLIST_FILE = Resources/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 5.0;
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
 					"\"$(SDKROOT)/usr/lib/system\"",
@@ -836,6 +879,7 @@
 					"\"$(SRCROOT)/OtherSources/lib\"",
 				);
 				PRODUCT_NAME = DocSets;
+				PROVISIONING_PROFILE = "";
 				VALIDATE_PRODUCT = YES;
 				VALID_ARCHS = armv7;
 			};
