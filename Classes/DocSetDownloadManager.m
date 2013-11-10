@@ -92,25 +92,26 @@
 			NSString *fullPath = [docPath stringByAppendingPathComponent:path];
 			u_int8_t b = 1;
 			setxattr([fullPath fileSystemRepresentation], "com.apple.MobileBackup", &b, 1, 0, 0);
-            
+
+            NSString *infoPath = [fullPath stringByAppendingPathComponent:@"Contents/Info.plist"];
+            NSDictionary *infoDict = [NSDictionary dictionaryWithContentsOfFile:infoPath];
+
             DocSet *docSet;
             
-            // ^(com.apple.adc.documentation.AppleiOS)(\d)\.(\d)(.iOSLibrary.docset)$
-            NSString *pattern = @"^(com.apple.adc.documentation.AppleiOS)(\\d)\\.(\\d)(.iOSLibrary.docset)$";
-            NSRegularExpression *regex = [NSRegularExpression regularExpressionWithPattern:pattern options:NSRegularExpressionCaseInsensitive error:nil];
-            NSTextCheckingResult *docSetMatch = [regex firstMatchInString:path options:0 range:NSMakeRange(0, path.length)];
-            if (docSetMatch.numberOfRanges == 5) {
-                NSInteger version = [[path substringWithRange:[docSetMatch rangeAtIndex:2]] integerValue];
-                if (version <= 6) {
-                    docSet = [[AppleDepDocSet alloc] initWithPath:fullPath];
-                } else {
+            NSString *publisher = infoDict[@"DocSetPublisherName"];
+            
+            if ([publisher isEqualToString:@"Apple"]) {
+                
+                NSInteger xcodeVersion = [[infoDict[@"DocSetMinimumXcodeVersion"] componentsSeparatedByString:@"."][0] integerValue];
+                if (xcodeVersion >= 5) {
                     docSet = [[AppleDocSet alloc] initWithPath:fullPath];
+                } else {
+                    docSet = [[AppleDepDocSet alloc] initWithPath:fullPath];
                 }
-            } else {
-                // more comparision for other types
+            } else if (!publisher && infoDict[@"isDashDocset"]) {
                 docSet = [[DashDocSet alloc] initWithPath:fullPath];
             }
-            
+    
             if (docSet) [loadedSets addObject:docSet];
 
 		}
