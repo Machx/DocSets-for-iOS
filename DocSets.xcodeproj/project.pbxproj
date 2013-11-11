@@ -128,6 +128,7 @@
 		E178362E182E7890003FEE28 /* AppleDepDocSet.m in Sources */ = {isa = PBXBuildFile; fileRef = E178362D182E7890003FEE28 /* AppleDepDocSet.m */; };
 		E1783631182E789B003FEE28 /* DashDocSet.m in Sources */ = {isa = PBXBuildFile; fileRef = E1783630182E789B003FEE28 /* DashDocSet.m */; };
 		E1783635182F961B003FEE28 /* DocSet.m in Sources */ = {isa = PBXBuildFile; fileRef = E1783634182F961A003FEE28 /* DocSet.m */; };
+		E19D187818310BE00007D3B6 /* CocoaDocSet.m in Sources */ = {isa = PBXBuildFile; fileRef = E19D187718310BE00007D3B6 /* CocoaDocSet.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -298,6 +299,8 @@
 		E1783630182E789B003FEE28 /* DashDocSet.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DashDocSet.m; sourceTree = "<group>"; };
 		E1783633182F961A003FEE28 /* DocSet.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DocSet.h; sourceTree = "<group>"; };
 		E1783634182F961A003FEE28 /* DocSet.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DocSet.m; sourceTree = "<group>"; };
+		E19D187618310BE00007D3B6 /* CocoaDocSet.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CocoaDocSet.h; sourceTree = "<group>"; };
+		E19D187718310BE00007D3B6 /* CocoaDocSet.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CocoaDocSet.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -627,6 +630,8 @@
 				E178362D182E7890003FEE28 /* AppleDepDocSet.m */,
 				E178362F182E789B003FEE28 /* DashDocSet.h */,
 				E1783630182E789B003FEE28 /* DashDocSet.m */,
+				E19D187618310BE00007D3B6 /* CocoaDocSet.h */,
+				E19D187718310BE00007D3B6 /* CocoaDocSet.m */,
 			);
 			name = DocSet;
 			sourceTree = "<group>";
@@ -792,6 +797,7 @@
 				7F1D42FB14D1632700A85CB3 /* b64.c in Sources */,
 				7F1D42FC14D1632700A85CB3 /* bzxar.c in Sources */,
 				7F1D42FD14D1632700A85CB3 /* darwinattr.c in Sources */,
+				E19D187818310BE00007D3B6 /* CocoaDocSet.m in Sources */,
 				7F1D42FE14D1632700A85CB3 /* data.c in Sources */,
 				7F1D42FF14D1632700A85CB3 /* ea.c in Sources */,
 				7F1D430014D1632700A85CB3 /* err.c in Sources */,

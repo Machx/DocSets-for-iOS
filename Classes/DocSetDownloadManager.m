@@ -9,6 +9,7 @@
 #import "DocSetDownloadManager.h"
 #import "AppleDepDocSet.h"
 #import "AppleDocSet.h"
+#import "CocoaDocSet.h"
 #import "DashDocSet.h"
 #import "xar.h"
 #include <sys/xattr.h>
@@ -103,12 +104,17 @@
             
             if (xcodeVersion && !isDashDocset) {
                 NSInteger xcodeMajorVersion = [[xcodeVersion componentsSeparatedByString:@"."][0] integerValue];
-                if (xcodeMajorVersion >= 5) {
+                NSString *vendor = infoDict[@"DocSetPublisherName"];
+                
+                if (![vendor isEqualToString:@"Apple"]) {
+                    docSet = [[CocoaDocSet alloc] initWithPath:fullPath];
+                } else if (xcodeMajorVersion >= 5) {
                     docSet = [[AppleDocSet alloc] initWithPath:fullPath];
                 } else {
                     docSet = [[AppleDepDocSet alloc] initWithPath:fullPath];
                 }
             }
+            
             else if (isDashDocset) {
                 docSet = [[DashDocSet alloc] initWithPath:fullPath];
             }
