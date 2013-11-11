@@ -1,5 +1,5 @@
 //
-//  GenericDocSet.m
+//  DocSet.m
 //  DocSets
 //
 //  Created by Dennis Oberhoff on 10/11/13.

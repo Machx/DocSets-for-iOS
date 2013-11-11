@@ -101,14 +101,14 @@
             NSString *publisher = infoDict[@"DocSetPublisherName"];
             
             if ([publisher isEqualToString:@"Apple"]) {
-                
                 NSInteger xcodeVersion = [[infoDict[@"DocSetMinimumXcodeVersion"] componentsSeparatedByString:@"."][0] integerValue];
                 if (xcodeVersion >= 5) {
                     docSet = [[AppleDocSet alloc] initWithPath:fullPath];
                 } else {
                     docSet = [[AppleDepDocSet alloc] initWithPath:fullPath];
                 }
-            } else if (!publisher && infoDict[@"isDashDocset"]) {
+            }
+            else if (infoDict[@"isDashDocset"]) {
                 docSet = [[DashDocSet alloc] initWithPath:fullPath];
             }
     
@@ -335,63 +335,81 @@
 	
 	dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
 		NSFileManager *fm = [[NSFileManager alloc] init];
-		NSString *extractionTargetPath = [[self.downloadTargetPath stringByDeletingLastPathComponent] stringByAppendingPathComponent:@"xar_extract"];
-		self.extractedPath = extractionTargetPath;
-		[fm createDirectoryAtPath:extractionTargetPath withIntermediateDirectories:YES attributes:nil error:NULL];
-		
-		const char *xar_path = [self.downloadTargetPath fileSystemRepresentation];
-		xar_t x = xar_open(xar_path, READ);
-		
-		xar_iter_t i = xar_iter_new();
-		xar_file_t f = xar_file_first(x, i);
-		NSInteger numberOfFiles = 1;
-		do {
-			f = xar_file_next(i);
-			if (f != NULL) {
-				numberOfFiles += 1;
-			}
-		} while (f != NULL);
-		xar_iter_free(i);
-		
-		chdir([extractionTargetPath fileSystemRepresentation]);
-		
-		if (x == NULL) {
-			NSLog(@"Could not open archive");
-			[self fail];
-		} else {
-			xar_iter_t i = xar_iter_new();
-			xar_file_t f = xar_file_first(x, i);
-			NSInteger filesExtracted = 0;
-			do {
-				if (self.shouldCancelExtracting) {
-					NSLog(@"Extracting cancelled");
-					break;
-				}
-				if (f) {				
-					const char *name = NULL;
-					xar_prop_get(f, "name", &name);
-					int32_t extractResult = xar_extract(x, f);
-					if (extractResult != 0) {
-						NSLog(@"Could not extract file: %s", name);
-					}
-					f = xar_file_next(i);
-					
-					filesExtracted++;
-					float extractionProgress = (float)filesExtracted / (float)numberOfFiles;
-					dispatch_async(dispatch_get_main_queue(), ^{
-						self.progress = extractionProgress;
-					});
-				}
-			} while (f != NULL);
-			xar_iter_free(i);
+        
+        NSString *fileType = [self.downloadTargetPath lastPathComponent];
+        NSString *extractionTargetPath = [[self.downloadTargetPath stringByDeletingLastPathComponent] stringByAppendingPathComponent:@"extract"];
+        self.extractedPath = extractionTargetPath;
+        [fm createDirectoryAtPath:extractionTargetPath withIntermediateDirectories:YES attributes:nil error:NULL];
+        
+        if ([fileType isEqualToString:@"dmg"]) {
             
-            if (self.shouldCancelExtracting) {
-                // Cleanup: delete all files that have already been extracted
-                NSFileManager *fm = [[NSFileManager alloc] init];
-                [fm removeItemAtPath:extractionTargetPath error:NULL];
+            // extract dmg and pkg
+            
+            
+        }
+        else if ([fileType isEqualToString:@"xar"]) {
+          
+            const char *xar_path = [self.downloadTargetPath fileSystemRepresentation];
+            xar_t x = xar_open(xar_path, READ);
+            
+            xar_iter_t i = xar_iter_new();
+            xar_file_t f = xar_file_first(x, i);
+            NSInteger numberOfFiles = 1;
+            do {
+                f = xar_file_next(i);
+                if (f != NULL) {
+                    numberOfFiles += 1;
+                }
+            } while (f != NULL);
+            xar_iter_free(i);
+            
+            chdir([extractionTargetPath fileSystemRepresentation]);
+            
+            if (x == NULL) {
+                NSLog(@"Could not open archive");
+                [self fail];
+            } else {
+                xar_iter_t i = xar_iter_new();
+                xar_file_t f = xar_file_first(x, i);
+                NSInteger filesExtracted = 0;
+                do {
+                    if (self.shouldCancelExtracting) {
+                        NSLog(@"Extracting cancelled");
+                        break;
+                    }
+                    if (f) {
+                        const char *name = NULL;
+                        xar_prop_get(f, "name", &name);
+                        int32_t extractResult = xar_extract(x, f);
+                        if (extractResult != 0) {
+                            NSLog(@"Could not extract file: %s", name);
+                        }
+                        f = xar_file_next(i);
+                        
+                        filesExtracted++;
+                        float extractionProgress = (float)filesExtracted / (float)numberOfFiles;
+                        dispatch_async(dispatch_get_main_queue(), ^{
+                            self.progress = extractionProgress;
+                        });
+                    }
+                } while (f != NULL);
+                xar_iter_free(i);
+                
+                if (self.shouldCancelExtracting) {
+                    // Cleanup: delete all files that have already been extracted
+                    NSFileManager *fm = [[NSFileManager alloc] init];
+                    [fm removeItemAtPath:extractionTargetPath error:NULL];
+                }
             }
-		}
-		xar_close(x);
+            xar_close(x);
+        }
+        else if  ([fileType isEqualToString:@"tgz"]) {
+            
+            NSData *dashDocSetDownload = [NSData dataWithContentsOfFile:self.downloadTargetPath];
+            [dashDocSetDownload writeToFile:extractionTargetPath options:NSDataWritingFileProtectionNone error:nil];
+            
+        }
+        
 		
 		[fm removeItemAtPath:self.downloadTargetPath error:NULL];
 		

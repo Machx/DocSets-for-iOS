@@ -60,4 +60,12 @@
     return webURL;
 }
 
+-(NSString*)ipadCSS{
+    return @"<style>body { font-size: 16px !important; } pre { white-space: pre-wrap !important; }</style>";
+}
+
+-(NSString*)iphoneCSS{
+    return @"<meta name = \"viewport\" content = \"width = device-width, initial-scale=1.0\"><style>body { font-size: 15px !important; padding: 15px !important; } pre { white-space: pre-wrap !important; } h1 {font-size: 22px !important;} h2 { font-size: 20px !important; } h3 { font-size: 18px !important; } .dtsDocNumber {font-size: 22px !important;} .specbox { margin-left: 0 !important; } #feedbackForm { display: none; }</style>";
+}
+
 @end

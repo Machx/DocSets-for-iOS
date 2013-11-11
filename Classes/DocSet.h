@@ -45,6 +45,8 @@ typedef void(^DocSetSearchCompletionHandler)(NSString *searchTerm, NSArray *resu
 @property (nonatomic, strong, readonly) NSString *title;
 @property (nonatomic, strong, readonly) NSString *copyright;
 @property (nonatomic, strong, readonly) NSString *bundleID;
+@property (nonatomic, readonly) NSString *ipadCSS;
+@property (nonatomic, readonly) NSString *iphoneCSS;
 @property (nonatomic, strong, readonly) NSManagedObjectContext *managedObjectContext;
 @property (nonatomic, strong, readonly) NSPersistentStoreCoordinator *persistentStoreCoordinator;
 
