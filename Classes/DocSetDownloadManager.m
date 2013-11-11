@@ -98,20 +98,21 @@
 
             DocSet *docSet;
             
-            NSString *publisher = infoDict[@"DocSetPublisherName"];
+            NSString *xcodeVersion = infoDict[@"DocSetMinimumXcodeVersion"];
+            BOOL *isDashDocset = [infoDict[@"isDashDocset"] boolValue];
             
-            if ([publisher isEqualToString:@"Apple"]) {
-                NSInteger xcodeVersion = [[infoDict[@"DocSetMinimumXcodeVersion"] componentsSeparatedByString:@"."][0] integerValue];
-                if (xcodeVersion >= 5) {
+            if (xcodeVersion && !isDashDocset) {
+                NSInteger xcodeMajorVersion = [[xcodeVersion componentsSeparatedByString:@"."][0] integerValue];
+                if (xcodeMajorVersion >= 5) {
                     docSet = [[AppleDocSet alloc] initWithPath:fullPath];
                 } else {
                     docSet = [[AppleDepDocSet alloc] initWithPath:fullPath];
                 }
             }
-            else if (infoDict[@"isDashDocset"]) {
+            else if (isDashDocset) {
                 docSet = [[DashDocSet alloc] initWithPath:fullPath];
             }
-    
+        
             if (docSet) [loadedSets addObject:docSet];
 
 		}

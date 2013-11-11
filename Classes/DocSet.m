@@ -275,7 +275,6 @@
     return webURL;
 }
 
-
 - (BOOL)nodeIsExpandable:(NSManagedObject *)node
 {
     int numberOfSubnodes = [[node valueForKey:@"kSubnodeCount"] intValue];
