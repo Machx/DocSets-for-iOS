@@ -343,7 +343,7 @@
 	dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
 		NSFileManager *fm = [[NSFileManager alloc] init];
         
-        NSString *fileType = [self.downloadTargetPath lastPathComponent];
+        NSString *fileType = [self.downloadTargetPath pathExtension];
         NSString *extractionTargetPath = [[self.downloadTargetPath stringByDeletingLastPathComponent] stringByAppendingPathComponent:@"extract"];
         self.extractedPath = extractionTargetPath;
         [fm createDirectoryAtPath:extractionTargetPath withIntermediateDirectories:YES attributes:nil error:NULL];
