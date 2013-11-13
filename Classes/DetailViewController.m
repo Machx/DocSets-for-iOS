@@ -428,28 +428,21 @@
         
 		NSString *html = [NSString stringWithContentsOfURL:URL encoding:NSUTF8StringEncoding error:NULL];
 		if ([[URL path] rangeOfString:@"__cached__"].location == NSNotFound) {
-			//Rewrite HTML to get rid of the JavaScript that redirects to the "touch-friendly" page:
-			NSScanner *scanner = [NSScanner scannerWithString:html];
-			NSRange scriptRange;
             
-			if ([scanner scanUpToString:@"<script>String.prototype.cleanUpURL" intoString:NULL]) {
-				scriptRange.location = [scanner scanLocation];
-				[scanner scanString:@"<script>String.prototype.cleanUpURL" intoString:NULL];
-				[scanner scanUpToString:@"</script>" intoString:NULL];
-				[scanner scanString:@"</script>" intoString:NULL];
-                scriptRange.length = [scanner scanLocation] - scriptRange.location;
-                if (scriptRange.location > 0) html = [html stringByReplacingCharactersInRange:scriptRange withString:@""];
-			}
-            
+            // strip away all css and java script
+            NSRegularExpression *cleanRegex = [NSRegularExpression regularExpressionWithPattern:@"(<(script|link)(.*)((\\.css\"|\\.js\"))(.*)(>|</script>))|(<script>(.*)(</script>?.|/>))|((<!--)(.*)>)" options:0 error:nil];
+            html = [cleanRegex stringByReplacingMatchesInString:html options:0 range:NSMakeRange(0, html.length) withTemplate:@""];
+
 			if ([html rangeOfString:customCSS].location == NSNotFound) {
                 
                 // find the space between title and first meta tag and insert custom css
+                NSScanner *scanner = [NSScanner scannerWithString:html];
                 [scanner setScanLocation:0];
                 [scanner scanString:@"</title>" intoString:NULL];
                 [scanner scanUpToString:@"<meta" intoString:NULL];
                 NSRange metaRange = NSMakeRange(scanner.scanLocation, 0);
                 html = [html stringByReplacingCharactersInRange:metaRange withString:customCSS];
-            
+                
 				//We need to write the modified html to a file for back/forward to work properly.
 				NSInteger anchorLocation = [[URL absoluteString] rangeOfString:@"#"].location;
 				NSString *URLAnchor = (anchorLocation != NSNotFound) ? [[URL absoluteString] substringFromIndex:anchorLocation] : nil;
@@ -462,6 +455,7 @@
 					cacheURL = [NSURL URLWithString:cacheURLString];
     
                 }
+                
 				[html writeToURL:cacheURL atomically:YES encoding:NSUTF8StringEncoding error:NULL];
 				[webView loadRequest:[NSURLRequest requestWithURL:cacheURL]];
 				return NO;
