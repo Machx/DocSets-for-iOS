@@ -438,12 +438,18 @@
 				[scanner scanUpToString:@"</script>" intoString:NULL];
 				[scanner scanString:@"</script>" intoString:NULL];
                 scriptRange.length = [scanner scanLocation] - scriptRange.location;
-			} else {
-				scriptRange = NSMakeRange(0, 0);
+                if (scriptRange.location > 0) html = [html stringByReplacingCharactersInRange:scriptRange withString:@""];
 			}
             
-			if (scriptRange.length > 0) {
-				html = [html stringByReplacingCharactersInRange:scriptRange withString:customCSS];
+			if ([html rangeOfString:customCSS].location == NSNotFound) {
+                
+                // find the space between title and first meta tag and insert custom css
+                [scanner setScanLocation:0];
+                [scanner scanString:@"</title>" intoString:NULL];
+                [scanner scanUpToString:@"<meta" intoString:NULL];
+                NSRange metaRange = NSMakeRange(scanner.scanLocation, 0);
+                html = [html stringByReplacingCharactersInRange:metaRange withString:customCSS];
+            
 				//We need to write the modified html to a file for back/forward to work properly.
 				NSInteger anchorLocation = [[URL absoluteString] rangeOfString:@"#"].location;
 				NSString *URLAnchor = (anchorLocation != NSNotFound) ? [[URL absoluteString] substringFromIndex:anchorLocation] : nil;
@@ -459,6 +465,7 @@
 				[html writeToURL:cacheURL atomically:YES encoding:NSUTF8StringEncoding error:NULL];
 				[webView loadRequest:[NSURLRequest requestWithURL:cacheURL]];
 				return NO;
+            
 			}
             
 		}
