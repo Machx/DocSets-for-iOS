@@ -67,8 +67,9 @@
 }
 
 -(NSString*)iphoneCSS{
-
-    return @"<meta name = \"viewport\" content = \"width = device-width, initial-scale=1.0\">\n<style>body { font-size: 15px !important; padding: 15px !important; } pre { white-space: pre-wrap !important; } h1 {font-size: 22px !important;} h2 { font-size: 20px !important; } h3 { font-size: 18px !important; } .dtsDocNumber {font-size: 22px !important;} .specbox { margin-left: 0 !important; } #adcHeader { display: none; } #header { display: none; } #tocContainer { display: none; } #xcode_leave_feedback { display: none; }\n</style>";
+    
+    return @"<meta name = \"viewport\" content = \"width = device-width, initial-scale=1.0\"><style>body { font-size: 15px !important; padding: 15px !important; } pre { white-space: pre-wrap !important; } h1 {font-size: 22px !important;} h2 { font-size: 20px !important; } h3 { font-size: 18px !important; } html { font-family: Lucida Grande; } #pageTitle { text-align:center; } .pageNavigationLinks, .tooltip, .hideOnPrint, .copyright, #header, #feedbackForm , #xcode_leave_feedback{ display: none; } img{ max-width:100% ;height: auto; } #pageTitle { color : #000 } .jump{ margin-top: 1.75em; color: #3c4c6c; padding-bottom: 2px; } .ul{ list-style: disc outside; margin: 0 0 .833em 1.35em; padding: 0 0 .5em; display: block; list-style-type: disc; } a { color: rgba(51,102,204,1.0); text-decoration: none; }</style>";
+    
 }
 
 @end
