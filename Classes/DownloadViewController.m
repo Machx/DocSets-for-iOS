@@ -137,7 +137,7 @@
     DownloadCell *cell = (DownloadCell *)[tableView dequeueReusableCellWithIdentifier:CellIdentifier];
     if (cell == nil) {
 		cell = [[DownloadCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:CellIdentifier];
-		cell.detailTextLabel.lineBreakMode = UILineBreakModeMiddleTruncation;
+        cell.detailTextLabel.lineBreakMode = NSLineBreakByTruncatingMiddle;
     }
 	
     NSDictionary *downloadInfo = [[[DocSetDownloadManager sharedDownloadManager] availableDownloads] objectAtIndex:indexPath.row];

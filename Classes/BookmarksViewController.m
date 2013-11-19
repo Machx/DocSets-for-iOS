@@ -174,9 +174,9 @@
 	UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
     if (cell == nil) {
 		cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:CellIdentifier];
-		cell.textLabel.minimumFontSize = 13.0;
+        cell.textLabel.minimumScaleFactor = (13.0/[UIFont labelFontSize]);
 		cell.textLabel.adjustsFontSizeToFitWidth = YES;
-		cell.textLabel.lineBreakMode = UILineBreakModeMiddleTruncation;
+        cell.textLabel.lineBreakMode = NSLineBreakByTruncatingMiddle;
 	}
 	
 	NSDictionary *bookmark = [[[BookmarksManager sharedBookmarksManager] bookmarksForDocSet:docSet] objectAtIndex:indexPath.row];

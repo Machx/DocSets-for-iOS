@@ -77,7 +77,7 @@
 	titleLabel.shadowColor = [UIColor whiteColor];
 	titleLabel.shadowOffset = CGSizeMake(0, 1);
 	titleLabel.font = [UIFont boldSystemFontOfSize:17.0];
-	titleLabel.textAlignment = UITextAlignmentCenter;
+    titleLabel.textAlignment = NSTextAlignmentCenter;
 	titleLabel.backgroundColor = [UIColor clearColor];
 	titleLabel.autoresizingMask = UIViewAutoresizingFlexibleLeftMargin | UIViewAutoresizingFlexibleRightMargin;
 	
