@@ -378,12 +378,12 @@
 	vc.delegate = self;
 	UINavigationController *navController = [[UINavigationController alloc] initWithRootViewController:vc];
 	navController.toolbarHidden = NO;
-	[self presentModalViewController:navController animated:YES];
+    [self presentViewController:navController animated:YES completion:nil];
 }
 
 - (void)bookmarksViewController:(BookmarksViewController *)viewController didSelectBookmark:(NSDictionary *)bookmark
-{	
-	[viewController dismissModalViewControllerAnimated:YES];
+{
+    [viewController dismissViewControllerAnimated:YES completion:nil];
 	DetailViewController *vc = [[DetailViewController alloc] initWithNibName:nil bundle:nil];
 	vc.docSet = self.docSet;
 	[self.navigationController pushViewController:vc animated:YES];

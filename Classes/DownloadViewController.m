@@ -107,7 +107,7 @@
 
 - (void)done:(id)sender
 {
-	[self dismissModalViewControllerAnimated:YES];
+    [self dismissViewControllerAnimated:YES completion:nil];
 }
 
 - (void)disableIdleTimerSwitchToggled:(id)sender

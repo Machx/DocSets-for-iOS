@@ -200,13 +200,13 @@
 		outlinePopover = [[UIPopoverController alloc] initWithContentViewController:outlineViewController];
 		[outlinePopover presentPopoverFromBarButtonItem:sender permittedArrowDirections:UIPopoverArrowDirectionAny animated:YES];
 	} else {
-		[self presentModalViewController:outlineViewController animated:YES];
+        [self presentViewController:outlineViewController animated:YES completion:nil];
 	}
 }
 
 - (void)dismissOutline:(id)sender
 {
-	[self dismissModalViewControllerAnimated:YES];
+    [self dismissViewControllerAnimated:YES completion:nil];
 }
 
 - (void)showActions:(id)sender
@@ -282,7 +282,7 @@
 			bookmarksPopover = [[UIPopoverController alloc] initWithContentViewController:navController];
 			[bookmarksPopover presentPopoverFromBarButtonItem:sender permittedArrowDirections:UIPopoverArrowDirectionUp animated:YES];
 		} else {
-			[self presentModalViewController:navController animated:YES];
+            [self presentViewController:navController animated:YES completion:nil];
 		}
 	}
 }
@@ -377,7 +377,7 @@
 	if ([[UIDevice currentDevice] userInterfaceIdiom] == UIUserInterfaceIdiomPad) {
 		[bookmarksPopover dismissPopoverAnimated:YES];
 	} else {
-		[self dismissModalViewControllerAnimated:YES];
+        [self dismissViewControllerAnimated:YES completion:nil];
 	}
 }
 

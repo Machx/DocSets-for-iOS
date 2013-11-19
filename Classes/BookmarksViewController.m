@@ -115,12 +115,12 @@
 	}
 	[mailComposer setMessageBody:html isHTML:YES];
 	
-	[self presentModalViewController:mailComposer animated:YES];
+    [self presentViewController:mailComposer animated:YES completion:nil];
 }
 
 - (void)mailComposeController:(MFMailComposeViewController *)controller didFinishWithResult:(MFMailComposeResult)result error:(NSError *)error
 {
-	[controller dismissModalViewControllerAnimated:YES];
+    [controller dismissViewControllerAnimated:YES completion:nil];
 }
 
 - (void)bookmarksDidUpdate:(NSNotification *)notification
@@ -143,7 +143,7 @@
 
 - (void)done:(id)sender
 {
-	[self dismissModalViewControllerAnimated:YES];
+    [self dismissViewControllerAnimated:YES completion:nil];
 }
 
 - (void)setEditing:(BOOL)editing animated:(BOOL)animated
