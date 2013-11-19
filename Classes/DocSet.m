@@ -341,9 +341,4 @@
 	return persistentStoreCoordinator;
 }
 
-- (void)dealloc
-{
-	dispatch_release(searchQueue);
-}
-
 @end
