@@ -49,9 +49,10 @@
 	self.detailViewController.view.layer.cornerRadius = 6.0;
 	self.detailViewController.view.clipsToBounds = YES;
 	
-	self.masterContainerView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"Shadow.png"]];
+    UIImage *image = [UIImage imageNamed:@"Shadow.png"];
+    image = [image resizableImageWithCapInsets:UIEdgeInsetsMake(0.2, 0.2, 0.6, 0.6)];
+    self.masterContainerView = [[UIImageView alloc] initWithImage:image];
 	_masterContainerView.userInteractionEnabled = YES;
-	_masterContainerView.contentStretch = CGRectMake(0.2, 0.2, 0.6, 0.6);
 	_masterContainerView.image = nil;
 	
 	[self layoutViewControllers];
