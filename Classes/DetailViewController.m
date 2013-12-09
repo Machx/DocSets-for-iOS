@@ -39,29 +39,39 @@
 	outlineButtonItem = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"Outline.png"] style:UIBarButtonItemStyleBordered target:self action:@selector(showOutline:)];
 	outlineButtonItem.width = 32.0;
 	outlineButtonItem.enabled = NO;
-    outlineButtonItem.imageInsets = UIEdgeInsetsMake(10.0f, 0.0f, -10.0f, 0.0f);
 	
 	backButtonItem = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"Back.png"] style:UIBarButtonItemStylePlain target:self action:@selector(goBack:)];
 	backButtonItem.enabled = NO;
-    backButtonItem.imageInsets = UIEdgeInsetsMake(10.0f, 0.0f, -10.0f, 0.0f);
-	forwardButtonItem = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"Forward.png"] style:UIBarButtonItemStylePlain target:self action:@selector(goForward:)];
-	forwardButtonItem.enabled = NO;
-    forwardButtonItem.imageInsets = UIEdgeInsetsMake(10.0f, 0.0f, -10.0f, 0.0f);
-	bookmarksButtonItem = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemBookmarks target:self action:@selector(showBookmarks:)];
-	bookmarksButtonItem.enabled = NO;
-    bookmarksButtonItem.imageInsets = UIEdgeInsetsMake(10.0f, 0.0f, -10.0f, 0.0f);
-	actionButtonItem = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemAction target:self action:@selector(showActions:)];
-	actionButtonItem.enabled = NO;
-    actionButtonItem.imageInsets = UIEdgeInsetsMake(10.0f, 0.0f, -10.0f, 0.0f);
 	
+    forwardButtonItem = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"Forward.png"] style:UIBarButtonItemStylePlain target:self action:@selector(goForward:)];
+	forwardButtonItem.enabled = NO;
+	
+    bookmarksButtonItem = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemBookmarks target:self action:@selector(showBookmarks:)];
+	bookmarksButtonItem.enabled = NO;
+	
+    actionButtonItem = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemAction target:self action:@selector(showActions:)];
+	actionButtonItem.enabled = NO;
+
 	if ([[UIDevice currentDevice] userInterfaceIdiom] == UIUserInterfaceIdiomPad) {
 		UIBarButtonItem *browseButtonItem = [[UIBarButtonItem alloc] initWithTitle:NSLocalizedString(@"DocSets", nil) style:UIBarButtonItemStyleBordered target:self action:@selector(showLibrary:)];
 		UIBarButtonItem *spaceItem = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemFixedSpace target:nil action:nil];
 		spaceItem.width = 24.0;	
 		portraitToolbarItems = [NSArray arrayWithObjects:browseButtonItem, spaceItem, backButtonItem, spaceItem, forwardButtonItem, flexSpace, bookmarksButtonItem, spaceItem, actionButtonItem, spaceItem, outlineButtonItem, nil];
 		landscapeToolbarItems = [NSArray arrayWithObjects:backButtonItem, spaceItem, forwardButtonItem, flexSpace, bookmarksButtonItem, spaceItem, actionButtonItem, spaceItem, outlineButtonItem, nil];
+        
+        outlineButtonItem.imageInsets = UIEdgeInsetsMake(10.0f, 0.0f, -10.0f, 0.0f);
+        backButtonItem.imageInsets = UIEdgeInsetsMake(10.0f, 0.0f, -10.0f, 0.0f);
+        forwardButtonItem.imageInsets = UIEdgeInsetsMake(10.0f, 0.0f, -10.0f, 0.0f);
+        bookmarksButtonItem.imageInsets = UIEdgeInsetsMake(10.0f, 0.0f, -10.0f, 0.0f);
+        actionButtonItem.imageInsets = UIEdgeInsetsMake(10.0f, 0.0f, -10.0f, 0.0f);
+
 	}
-		
+	
+    // The webView has to be initialized here because in iOS7 openURL:withAnchor: is called
+    // before loadView.
+	webView = [[UIWebView alloc] initWithFrame:CGRectZero];
+    webView.delegate = self;
+    
 	return self;
 }
 
@@ -87,11 +97,10 @@
 	titleLabel.autoresizingMask = UIViewAutoresizingFlexibleLeftMargin | UIViewAutoresizingFlexibleRightMargin;
 	
 	CGFloat topToolbarHeight = ([[UIDevice currentDevice] userInterfaceIdiom] == UIUserInterfaceIdiomPad) ? 64.0 : 0.0; //44.0 iOS6 original
-	webView = [[UIWebView alloc] initWithFrame:CGRectMake(0, topToolbarHeight, self.view.bounds.size.width, self.view.bounds.size.height - topToolbarHeight)];
+	webView.frame = CGRectMake(0, topToolbarHeight, self.view.bounds.size.width, self.view.bounds.size.height - topToolbarHeight);
 	webView.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight;
 	webView.scalesPageToFit = YES;//([[UIDevice currentDevice] userInterfaceIdiom] == UIUserInterfaceIdiomPad);
 	
-	webView.delegate = self;
 	[self.view addSubview:webView];
 	
 	if ([[UIDevice currentDevice] userInterfaceIdiom] == UIUserInterfaceIdiomPad) {
