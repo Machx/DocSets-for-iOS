@@ -17,6 +17,7 @@
 		5D892D8B14D73C5A005B3273 /* Cancel-Pressed@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 5D892D8714D73C5A005B3273 /* Cancel-Pressed@2x.png */; };
 		5D892D8C14D73C5A005B3273 /* Cancel.png in Resources */ = {isa = PBXBuildFile; fileRef = 5D892D8814D73C5A005B3273 /* Cancel.png */; };
 		5D892D8D14D73C5A005B3273 /* Cancel@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 5D892D8914D73C5A005B3273 /* Cancel@2x.png */; };
+		7683C049491F4141BFA057ED /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = C456F0E62B4F4C2F8344629C /* libPods.a */; };
 		7F0BEE78156D75E4008D806F /* whitey.png in Resources */ = {isa = PBXBuildFile; fileRef = 7F0BEE76156D75E4008D806F /* whitey.png */; };
 		7F0BEE79156D75E4008D806F /* whitey@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 7F0BEE77156D75E4008D806F /* whitey@2x.png */; };
 		7F1D426314D0708F00A85CB3 /* Icon72.png in Resources */ = {isa = PBXBuildFile; fileRef = 7F1D426214D0708F00A85CB3 /* Icon72.png */; };
@@ -28,7 +29,6 @@
 		7F1D427B14D1550B00A85CB3 /* iTunesArtwork in Resources */ = {isa = PBXBuildFile; fileRef = 7F1D427A14D1550B00A85CB3 /* iTunesArtwork */; };
 		7F1D42C514D1624F00A85CB3 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 7F1D42C414D1624F00A85CB3 /* main.m */; };
 		7F1D42C714D1627D00A85CB3 /* AvailableDocSets.plist in Resources */ = {isa = PBXBuildFile; fileRef = 7F1D42C614D1627D00A85CB3 /* AvailableDocSets.plist */; };
-		7F1D42CB14D1629100A85CB3 /* docSet.mom in Resources */ = {isa = PBXBuildFile; fileRef = 7F1D42CA14D1629100A85CB3 /* docSet.mom */; };
 		7F1D42F914D1632700A85CB3 /* archive.c in Sources */ = {isa = PBXBuildFile; fileRef = 7F1D42CD14D1632700A85CB3 /* archive.c */; };
 		7F1D42FA14D1632700A85CB3 /* arcmod.c in Sources */ = {isa = PBXBuildFile; fileRef = 7F1D42CF14D1632700A85CB3 /* arcmod.c */; };
 		7F1D42FB14D1632700A85CB3 /* b64.c in Sources */ = {isa = PBXBuildFile; fileRef = 7F1D42D214D1632700A85CB3 /* b64.c */; };
@@ -146,6 +146,7 @@
 		5D892D8714D73C5A005B3273 /* Cancel-Pressed@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Cancel-Pressed@2x.png"; sourceTree = "<group>"; };
 		5D892D8814D73C5A005B3273 /* Cancel.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Cancel.png; sourceTree = "<group>"; };
 		5D892D8914D73C5A005B3273 /* Cancel@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Cancel@2x.png"; sourceTree = "<group>"; };
+		68548926250C4F93A44CF8C0 /* Pods.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.xcconfig; path = Pods/Pods.xcconfig; sourceTree = "<group>"; };
 		7F0BEE76156D75E4008D806F /* whitey.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = whitey.png; sourceTree = "<group>"; };
 		7F0BEE77156D75E4008D806F /* whitey@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "whitey@2x.png"; sourceTree = "<group>"; };
 		7F1D426214D0708F00A85CB3 /* Icon72.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Icon72.png; sourceTree = "<group>"; };
@@ -159,7 +160,6 @@
 		7F1D42C414D1624F00A85CB3 /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = main.m; path = OtherSources/main.m; sourceTree = "<group>"; };
 		7F1D42C614D1627D00A85CB3 /* AvailableDocSets.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = AvailableDocSets.plist; path = Resources/AvailableDocSets.plist; sourceTree = "<group>"; };
 		7F1D42C814D1628400A85CB3 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = Info.plist; path = Resources/Info.plist; sourceTree = "<group>"; };
-		7F1D42CA14D1629100A85CB3 /* docSet.mom */ = {isa = PBXFileReference; lastKnownFileType = file.bplist; name = docSet.mom; path = Resources/docSet.mom; sourceTree = "<group>"; };
 		7F1D42CC14D1632700A85CB3 /* appledouble.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = appledouble.h; path = OtherSources/lib/xar/appledouble.h; sourceTree = SOURCE_ROOT; };
 		7F1D42CD14D1632700A85CB3 /* archive.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = archive.c; path = OtherSources/lib/xar/archive.c; sourceTree = SOURCE_ROOT; };
 		7F1D42CE14D1632700A85CB3 /* archive.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = archive.h; path = OtherSources/lib/xar/archive.h; sourceTree = SOURCE_ROOT; };
@@ -291,6 +291,7 @@
 		7FF70B5212AD15B7001FF09F /* Back.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Back.png; sourceTree = "<group>"; };
 		7FF70B5312AD15B7001FF09F /* Forward.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Forward.png; sourceTree = "<group>"; };
 		7FF70C1412AD3FB8001FF09F /* libz.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libz.dylib; path = usr/lib/libz.dylib; sourceTree = SDKROOT; };
+		C456F0E62B4F4C2F8344629C /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		E1084E76182F9A7900E60D1C /* AppleDocSet.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AppleDocSet.h; sourceTree = "<group>"; };
 		E1084E77182F9A7900E60D1C /* AppleDocSet.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AppleDocSet.m; sourceTree = "<group>"; };
 		E178362C182E7890003FEE28 /* AppleDepDocSet.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AppleDepDocSet.h; sourceTree = "<group>"; };
@@ -317,6 +318,7 @@
 				7F8889B714CDEC13007604D7 /* QuartzCore.framework in Frameworks */,
 				7FF70C1512AD3FB8001FF09F /* libz.dylib in Frameworks */,
 				7F1D431014D1634800A85CB3 /* libcrypto.a in Frameworks */,
+				7683C049491F4141BFA057ED /* libPods.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -351,6 +353,7 @@
 				29B97317FDCFA39411CA2CEA /* Resources */,
 				29B97323FDCFA39411CA2CEA /* Frameworks */,
 				19C28FACFE9D520D11CA2CBB /* Products */,
+				68548926250C4F93A44CF8C0 /* Pods.xcconfig */,
 			);
 			name = CustomTemplate;
 			sourceTree = "<group>";
@@ -371,7 +374,6 @@
 			children = (
 				7F1D42C814D1628400A85CB3 /* Info.plist */,
 				7F1D42C614D1627D00A85CB3 /* AvailableDocSets.plist */,
-				7F1D42CA14D1629100A85CB3 /* docSet.mom */,
 				7FCAE4C212B70FC500F529FF /* Images */,
 			);
 			name = Resources;
@@ -389,6 +391,7 @@
 				7FF70C1412AD3FB8001FF09F /* libz.dylib */,
 				7FACA8E914CC0A2100BADCC8 /* libxml2.dylib */,
 				7F1D430F14D1634800A85CB3 /* libcrypto.a */,
+				C456F0E62B4F4C2F8344629C /* libPods.a */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -643,9 +646,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 1D6058960D05DD3E006BFB54 /* Build configuration list for PBXNativeTarget "DocSets" */;
 			buildPhases = (
+				CB97D42904154C5A82F58C14 /* Check Pods Manifest.lock */,
 				1D60588D0D05DD3D006BFB54 /* Resources */,
 				1D60588E0D05DD3D006BFB54 /* Sources */,
 				1D60588F0D05DD3D006BFB54 /* Frameworks */,
+				2B02AFDED8E04E309E25B275 /* Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -725,7 +730,6 @@
 				7F1D427614D0C76600A85CB3 /* DocSet.png in Resources */,
 				7F1D427B14D1550B00A85CB3 /* iTunesArtwork in Resources */,
 				7F1D42C714D1627D00A85CB3 /* AvailableDocSets.plist in Resources */,
-				7F1D42CB14D1629100A85CB3 /* docSet.mom in Resources */,
 				7F1D432014D164A500A85CB3 /* Class@2x.png in Resources */,
 				7F1D432114D164A500A85CB3 /* Const@2x.png in Resources */,
 				7F1D432214D164A500A85CB3 /* Enum@2x.png in Resources */,
@@ -776,6 +780,39 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		2B02AFDED8E04E309E25B275 /* Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Pods-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		CB97D42904154C5A82F58C14 /* Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		1D60588E0D05DD3D006BFB54 /* Sources */ = {
@@ -830,8 +867,10 @@
 /* Begin XCBuildConfiguration section */
 		1D6058940D05DD3E006BFB54 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 68548926250C4F93A44CF8C0 /* Pods.xcconfig */;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				ARCHS = "$(ARCHS_STANDARD_INCLUDING_64_BIT)";
 				CLANG_ENABLE_OBJC_ARC = YES;
 				CODE_SIGN_ENTITLEMENTS = DocSets.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Developer: Dennis Oberhoff (34UJY3FWG2)";
@@ -845,6 +884,7 @@
 				HEADER_SEARCH_PATHS = (
 					"OtherSources/lib/include/**",
 					"${SDKROOT}/usr/include/libxml2/**",
+					"\"${PODS_ROOT}/Headers\"/**",
 				);
 				INFOPLIST_FILE = Resources/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
@@ -862,8 +902,10 @@
 		};
 		1D6058950D05DD3E006BFB54 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 68548926250C4F93A44CF8C0 /* Pods.xcconfig */;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				ARCHS = "$(ARCHS_STANDARD_INCLUDING_64_BIT)";
 				CLANG_ENABLE_OBJC_ARC = YES;
 				CODE_SIGN_ENTITLEMENTS = DocSets.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Developer: Dennis Oberhoff (34UJY3FWG2)";
@@ -875,6 +917,7 @@
 				HEADER_SEARCH_PATHS = (
 					"OtherSources/lib/include/**",
 					"${SDKROOT}/usr/include/libxml2/**",
+					"\"${PODS_ROOT}/Headers\"/**",
 				);
 				INFOPLIST_FILE = Resources/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 7.0;

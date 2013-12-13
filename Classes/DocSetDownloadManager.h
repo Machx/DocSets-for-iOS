@@ -43,6 +43,7 @@
 - (void)reloadAvailableDocSets;
 - (void)updateAvailableDocSetsFromWeb;
 - (void)downloadDocSetAtURL:(NSString *)URL;
+- (void)downloadDocSetFromAtom:(NSURL *)URL;
 - (void)deleteDocSet:(DocSet *)docSetToDelete;
 - (DocSetDownload *)downloadForURL:(NSString *)URL;
 - (void)stopDownload:(DocSetDownload *)download;

@@ -53,6 +53,21 @@
     return YES;
 }
 
+- (BOOL)application:(UIApplication *)application openURL:(NSURL *)url sourceApplication:(NSString *)sourceApplication annotation:(id)annotation{
+    
+    if ([url.scheme isEqualToString:@"docs-for-xcode"]) {
+        
+        [[DocSetDownloadManager sharedDownloadManager] downloadDocSetFromAtom:url];
+        
+        
+        return YES;
+    } else {
+        return NO;
+    }
+    
+    
+}
+
 - (void)applicationDidEnterBackground:(UIApplication *)application
 {
 	[self saveInterfaceState];

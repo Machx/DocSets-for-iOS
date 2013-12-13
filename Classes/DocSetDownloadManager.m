@@ -7,6 +7,7 @@
 //
 
 #import "DocSetDownloadManager.h"
+#import <XMLDictionary/XMLDictionary.h>
 #import "AppleDepDocSet.h"
 #import "AppleDocSet.h"
 #import "CocoaDocSet.h"
@@ -14,7 +15,7 @@
 #import "xar.h"
 #include <sys/xattr.h>
 
-@interface DocSetDownloadManager ()
+@interface DocSetDownloadManager () <NSXMLParserDelegate>
 
 - (void)startNextDownload;
 - (void)reloadDownloadedDocSets;
@@ -179,6 +180,28 @@
 	[self startNextDownload];
     [self toggleIdleTimerIfNeeded];
 }
+
+-(void)downloadDocSetFromAtom:(NSURL*)URL{
+    
+    NSString *originalURL = [[URL.absoluteString stringByRemovingPercentEncoding] stringByReplacingOccurrencesOfString:@"docs-for-xcode://" withString:@""];
+    
+    NSURLRequest *request = [NSURLRequest requestWithURL:[NSURL URLWithString:originalURL]];
+    NSOperationQueue *queue = [NSOperationQueue new];
+    
+    [NSURLConnection sendAsynchronousRequest:request
+                                       queue:queue
+                           completionHandler:^(NSURLResponse *response, NSData *data, NSError *connectionError) {
+        
+                               XMLDictionaryParser *parser = [[XMLDictionaryParser alloc] init];
+                               NSDictionary *dict = [parser dictionaryWithData:data];
+                               NSString *downloadURL = dict[@"entry"][@"link"][@"_href"];
+                               [self downloadDocSetAtURL:downloadURL];
+
+     }];
+    
+    
+}
+
 
 - (void)deleteDocSet:(DocSet *)docSetToDelete
 {
