@@ -6,14 +6,6 @@
 	<array>
 		<dict>
 			<key>title</key>
-			<string>iOS 7.0 Library</string>
-			<key>name</key>
-			<string>com.apple.adc.documentation.AppleiOS7.0.iOSLibrary.docset</string>
-			<key>URL</key>
-			<string>http://devimages.apple.com/docsets/20131022/031-1318-A.dmg</string>
-		</dict>
-		<dict>
-			<key>title</key>
 			<string>iOS 6.1 Library</string>
 			<key>name</key>
 			<string>com.apple.adc.documentation.AppleiOS6.1.iOSLibrary.docset</string>
