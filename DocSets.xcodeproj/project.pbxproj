@@ -125,7 +125,6 @@
 		7FF70B5512AD15B7001FF09F /* Forward.png in Resources */ = {isa = PBXBuildFile; fileRef = 7FF70B5312AD15B7001FF09F /* Forward.png */; };
 		7FF70C1512AD3FB8001FF09F /* libz.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 7FF70C1412AD3FB8001FF09F /* libz.dylib */; };
 		E1084E78182F9A7900E60D1C /* AppleDocSet.m in Sources */ = {isa = PBXBuildFile; fileRef = E1084E77182F9A7900E60D1C /* AppleDocSet.m */; };
-		E157B4981834B19800B85558 /* com.omzsoftware.DocSets 2013-11-13 19.32.30.718.xcappdata in Resources */ = {isa = PBXBuildFile; fileRef = E157B4971834B19800B85558 /* com.omzsoftware.DocSets 2013-11-13 19.32.30.718.xcappdata */; };
 		E178362E182E7890003FEE28 /* AppleDepDocSet.m in Sources */ = {isa = PBXBuildFile; fileRef = E178362D182E7890003FEE28 /* AppleDepDocSet.m */; };
 		E1783631182E789B003FEE28 /* DashDocSet.m in Sources */ = {isa = PBXBuildFile; fileRef = E1783630182E789B003FEE28 /* DashDocSet.m */; };
 		E1783635182F961B003FEE28 /* DocSet.m in Sources */ = {isa = PBXBuildFile; fileRef = E1783634182F961A003FEE28 /* DocSet.m */; };
@@ -294,7 +293,6 @@
 		7FF70C1412AD3FB8001FF09F /* libz.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libz.dylib; path = usr/lib/libz.dylib; sourceTree = SDKROOT; };
 		E1084E76182F9A7900E60D1C /* AppleDocSet.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AppleDocSet.h; sourceTree = "<group>"; };
 		E1084E77182F9A7900E60D1C /* AppleDocSet.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AppleDocSet.m; sourceTree = "<group>"; };
-		E157B4971834B19800B85558 /* com.omzsoftware.DocSets 2013-11-13 19.32.30.718.xcappdata */ = {isa = PBXFileReference; lastKnownFileType = wrapper; name = "com.omzsoftware.DocSets 2013-11-13 19.32.30.718.xcappdata"; path = "../com.omzsoftware.DocSets 2013-11-13 19.32.30.718.xcappdata"; sourceTree = "<group>"; };
 		E178362C182E7890003FEE28 /* AppleDepDocSet.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AppleDepDocSet.h; sourceTree = "<group>"; };
 		E178362D182E7890003FEE28 /* AppleDepDocSet.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AppleDepDocSet.m; sourceTree = "<group>"; };
 		E178362F182E789B003FEE28 /* DashDocSet.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DashDocSet.h; sourceTree = "<group>"; };
@@ -371,7 +369,6 @@
 		29B97317FDCFA39411CA2CEA /* Resources */ = {
 			isa = PBXGroup;
 			children = (
-				E157B4971834B19800B85558 /* com.omzsoftware.DocSets 2013-11-13 19.32.30.718.xcappdata */,
 				7F1D42C814D1628400A85CB3 /* Info.plist */,
 				7F1D42C614D1627D00A85CB3 /* AvailableDocSets.plist */,
 				7F1D42CA14D1629100A85CB3 /* docSet.mom */,
@@ -728,7 +725,6 @@
 				7F1D427614D0C76600A85CB3 /* DocSet.png in Resources */,
 				7F1D427B14D1550B00A85CB3 /* iTunesArtwork in Resources */,
 				7F1D42C714D1627D00A85CB3 /* AvailableDocSets.plist in Resources */,
-				E157B4981834B19800B85558 /* com.omzsoftware.DocSets 2013-11-13 19.32.30.718.xcappdata in Resources */,
 				7F1D42CB14D1629100A85CB3 /* docSet.mom in Resources */,
 				7F1D432014D164A500A85CB3 /* Class@2x.png in Resources */,
 				7F1D432114D164A500A85CB3 /* Const@2x.png in Resources */,
@@ -851,7 +847,7 @@
 					"${SDKROOT}/usr/include/libxml2/**",
 				);
 				INFOPLIST_FILE = Resources/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 5.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
 					"\"$(SDKROOT)/usr/lib/system\"",
@@ -881,7 +877,7 @@
 					"${SDKROOT}/usr/include/libxml2/**",
 				);
 				INFOPLIST_FILE = Resources/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 5.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
 					"\"$(SDKROOT)/usr/lib/system\"",
