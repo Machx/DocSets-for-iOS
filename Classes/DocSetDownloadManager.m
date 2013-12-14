@@ -326,6 +326,12 @@
 	
 	bytesDownloaded = 0;
 	self.connection = [NSURLConnection connectionWithRequest:[NSURLRequest requestWithURL:self.URL] delegate:self];
+
+
+    [[NSRunLoop currentRunLoop] run];
+    [self.connection scheduleInRunLoop:[NSRunLoop currentRunLoop] forMode:NSDefaultRunLoopMode];
+    
+    
 }
 
 - (void)cancel

@@ -9,6 +9,7 @@
 #import "DocSetsAppDelegate.h"
 #import "RootViewController.h"
 #import "DetailViewController.h"
+#import "DownloadViewController.h"
 #import "SwipeSplitViewController.h"
 #import "DocSetViewController.h"
 #import "DocSet.h"
@@ -57,8 +58,15 @@
     
     if ([url.scheme isEqualToString:@"docs-for-xcode"]) {
         
-        [[DocSetDownloadManager sharedDownloadManager] downloadDocSetFromAtom:url];
+        DownloadViewController *vc = [[DownloadViewController alloc] initWithStyle:UITableViewStyleGrouped];
+        UINavigationController *navController = [[UINavigationController alloc] initWithRootViewController:vc];
+        navController.modalPresentationStyle = UIModalPresentationFormSheet;
         
+        [self.window.rootViewController presentViewController:navController animated:YES completion:^{
+            [[DocSetDownloadManager sharedDownloadManager] downloadDocSetFromAtom:url];
+            
+        }];
+
         
         return YES;
     } else {
