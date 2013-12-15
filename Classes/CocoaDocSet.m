@@ -58,13 +58,17 @@
  
 }
 
+- (NSString *)contentPath{
+    return @"//html/body/article";
+}
+
 -(NSString*)ipadCSS{
-    return @"<meta name = \"viewport\" user-scalable=0 content = \"width = device-width, initial-scale=1.0\"> <style> html { -webkit-text-size-adjust: 100%; } .scrollable {overflow-y: auto; -webkit-overflow-scrolling: touch; } #top_header { display: none; } #tocContainer { display: none;} #header { text-align: center; font-size: 14px !important; } .main-navigation{ display: none; } .footer { display: none; } #contents { font-family: Lucida Grande; font-size: 12px !important; text-decoration: none; } .img{ max-width:100%; height: auto; display: block; } </style>";
+    return @"<style>html { -webkit-text-size-adjust: 100%; } .scrollable {overflow-y: auto; -webkit-overflow-scrolling: touch; } #top_header { display: none; } #tocContainer { display: none;} #header { text-align: center; font-size: 14px !important; } .main-navigation{ display: none; } .footer { display: none; } #contents { font-family: Lucida Grande; font-size: 12px !important; text-decoration: none; } .img{ max-width:100%; height: auto; display: block; }</style> ";
 }
 
 -(NSString*)iphoneCSS{
     
-    return @"<meta name = \"viewport\" user-scalable=0 content = \"width = device-width, initial-scale=1.0\"> <style> html { -webkit-text-size-adjust: 100%; } .scrollable {overflow-y: auto; -webkit-overflow-scrolling: touch; } #top_header { display: none; } #tocContainer { display: none;} #header { text-align: center; font-size: 28px !important; } .main-navigation{ display: none; } .footer { display: none; } #contents { font-family: Lucida Grande; font-size: 24px !important; text-decoration: none; } .img{ max-width:100%; height: auto; display: block; } </style>";
+    return @"<style>html { -webkit-text-size-adjust: 100%; } .scrollable {overflow-y: auto; -webkit-overflow-scrolling: touch; } #top_header { display: none; } #tocContainer { display: none;} #header { text-align: center; font-size: 28px !important; } .main-navigation{ display: none; } .footer { display: none; } #contents { font-family: Lucida Grande; font-size: 24px !important; text-decoration: none; } .img{ max-width:100%; height: auto; display: block; } </style>";
 }
 
 

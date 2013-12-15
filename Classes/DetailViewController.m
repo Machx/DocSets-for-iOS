@@ -14,6 +14,9 @@
 #import "DocSet.h"
 #import "BookmarksManager.h"
 
+#import <XMLDictionary/XMLDictionary.h>
+#import <GDataXML-HTML/GDataXMLNode.h>
+
 #define EXTERNAL_LINK_ALERT_TAG	1
 
 @interface DetailViewController () 
@@ -420,6 +423,9 @@
 		
     
 		NSString *html = [NSString stringWithContentsOfURL:URL encoding:NSUTF8StringEncoding error:NULL];
+        
+        NSLog(@"Path: %@", URL.path);
+        
 		if ([[URL path] rangeOfString:@"__cached__"].location == NSNotFound) {
             
             NSString *customCSS;
@@ -430,19 +436,19 @@
                 customCSS = docSet.iphoneCSS;
             }
             
-            // strip away all css and java script
-            NSRegularExpression *cleanRegex = [NSRegularExpression regularExpressionWithPattern:@"(<(script|link)(.*)((\\.css\"|\\.js\"))(.*)(>|</script>))|(<script>(.*)(</script>?.|/>))|((<!--)(.*)>|(style=\"(.*?)\"))" options:0 error:nil];
-            html = [cleanRegex stringByReplacingMatchesInString:html options:0 range:NSMakeRange(0, html.length) withTemplate:@""];
-
-            // find the space between title and first meta tag and insert custom css
-            NSScanner *scanner = [NSScanner scannerWithString:html];
-            [scanner setScanLocation:0];
-            [scanner scanString:@"</title>" intoString:NULL];
-            [scanner scanUpToString:@"<meta" intoString:NULL];
-            NSRange metaRange = NSMakeRange(scanner.scanLocation, 0);
-            html = [html stringByReplacingCharactersInRange:metaRange withString:customCSS];
+            GDataXMLDocument *parser = [[GDataXMLDocument alloc] initWithHTMLString:html encoding:NSUTF8StringEncoding error:NULL];
             
-            //We need to write the modified html to a file for back/forward to work properly.
+            GDataXMLElement *article = [parser nodesForXPath:docSet.contentPath error:nil][0];
+            GDataXMLElement *complete = [[GDataXMLElement alloc] initWithHTMLString:@"<html></html>" error:NULL];
+            GDataXMLElement *meta = [[GDataXMLElement alloc] initWithHTMLString:@"<meta name=\"viewport\" user-scalable=\"0\" content=\"width = device-width, initial-scale=1.0\"/> <meta charset=\"utf-8\">" error:NULL];
+            
+            GDataXMLElement *css = [[GDataXMLElement alloc] initWithHTMLString:customCSS error:NULL];
+            [complete addChild:meta];
+            [complete addChild:css];
+            [complete addChild:article];
+            
+            html = complete.XMLString;
+        
             NSInteger anchorLocation = [[URL absoluteString] rangeOfString:@"#"].location;
             NSString *URLAnchor = (anchorLocation != NSNotFound) ? [[URL absoluteString] substringFromIndex:anchorLocation] : nil;
             NSString *path = [URL path];
@@ -476,6 +482,7 @@
 	outlineButtonItem.enabled = NO;
 	return YES;
 }
+
 
 - (void)alertView:(UIAlertView *)alertView didDismissWithButtonIndex:(NSInteger)buttonIndex
 {

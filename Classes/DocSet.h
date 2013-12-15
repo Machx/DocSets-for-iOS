@@ -7,6 +7,7 @@
 //
 
 #import <Foundation/Foundation.h>
+#import <GDataXML-HTML/GDataXMLNode.h>
 
 @protocol DocSet <NSObject>
 
@@ -47,6 +48,7 @@ typedef void(^DocSetSearchCompletionHandler)(NSString *searchTerm, NSArray *resu
 @property (nonatomic, strong, readonly) NSString *bundleID;
 @property (nonatomic, readonly) NSString *ipadCSS;
 @property (nonatomic, readonly) NSString *iphoneCSS;
+@property (nonatomic, readonly) NSString *contentPath;
 @property (nonatomic, strong, readonly) NSManagedObjectContext *managedObjectContext;
 @property (nonatomic, strong, readonly) NSPersistentStoreCoordinator *persistentStoreCoordinator;
 
@@ -62,5 +64,7 @@ typedef void(^DocSetSearchCompletionHandler)(NSString *searchTerm, NSArray *resu
 - (NSURL *)webURLForLocalURL:(NSURL *)localURL;
 
 - (NSString *)anchorForNode:(NSManagedObject*)node;
+
+- (NSString *)getHTMLContent;
 
 @end
