@@ -6,8 +6,8 @@
 //
 //
 
-#import "DocSet.h"
+#import "GenericDocSet.h"
 
-@interface AppleDocSet : DocSet
+@interface AppleDocSet : GenericDocSet
 
 @end

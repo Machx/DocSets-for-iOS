@@ -9,7 +9,7 @@
 #import <UIKit/UIKit.h>
 #import <MessageUI/MessageUI.h>
 
-@class DocSet, DetailViewController, BookmarksViewController;
+@class GenericDocSet, DetailViewController, BookmarksViewController;
 
 @protocol BookmarksViewControllerDelegate <NSObject>
 
@@ -19,13 +19,13 @@
 
 @interface BookmarksViewController : UITableViewController <MFMailComposeViewControllerDelegate, UIAlertViewDelegate> {
 
-	DocSet *docSet;
+	GenericDocSet *docSet;
 	__weak id <BookmarksViewControllerDelegate> delegate;
 }
 
 @property (nonatomic, weak) id <BookmarksViewControllerDelegate> delegate;
 @property (nonatomic, retain) UIBarButtonItem *syncInfoButtonItem;
 
-- (id)initWithDocSet:(DocSet *)selectedDocSet;
+- (id)initWithDocSet:(GenericDocSet *)selectedDocSet;
 
 @end

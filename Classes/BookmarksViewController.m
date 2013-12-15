@@ -7,8 +7,7 @@
 //
 
 #import "BookmarksViewController.h"
-#import "DetailViewController.h"
-#import "DocSet.h"
+#import "GenericDocSet.h"
 #import "BookmarksManager.h"
 #import "BookmarkSyncLogViewController.h"
 
@@ -19,7 +18,7 @@
 @synthesize syncInfoButtonItem=_syncInfoButtonItem;
 @synthesize delegate=_delegate;
 
-- (id)initWithDocSet:(DocSet *)selectedDocSet
+- (id)initWithDocSet:(GenericDocSet *)selectedDocSet
 {
 	self = [super initWithStyle:UITableViewStylePlain];
 	if (self) {

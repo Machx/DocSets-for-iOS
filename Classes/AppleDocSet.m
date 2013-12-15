@@ -62,15 +62,8 @@
 	return nil;
 }
 
--(NSString *)contentPath{
-    
-    return @"//html/body/article";
-    
-}
-
--(NSString*)ipadCSS{
-//    return @"<style>body { font-size: 16px !important; } pre { white-space: pre-wrap !important; }</style>";
-    
+-(NSString*)ipadCSS
+{
     return self.iphoneCSS;
 }
 

@@ -12,7 +12,7 @@
 #import "DownloadViewController.h"
 #import "SwipeSplitViewController.h"
 #import "DocSetViewController.h"
-#import "DocSet.h"
+#import "GenericDocSet.h"
 #import "DocSetDownloadManager.h"
 #import "BookmarksManager.h"
 
@@ -123,7 +123,7 @@
 	}
 	NSDictionary *interfaceStateInfo = [NSKeyedUnarchiver unarchiveObjectWithData:interfaceStateData];
 	NSArray *navigationStack = [interfaceStateInfo objectForKey:@"navigationStack"];
-	DocSet *selectedDocSet = nil;
+	GenericDocSet *selectedDocSet = nil;
 	for (NSDictionary *stackItem in navigationStack) {
 		NSString *docSetName = [stackItem objectForKey:@"docSetName"];
 		selectedDocSet = [[DocSetDownloadManager sharedDownloadManager] downloadedDocSetWithName:docSetName];

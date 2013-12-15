@@ -18,12 +18,25 @@
         NSString *infoPath = [path stringByAppendingPathComponent:@"Contents/Info.plist"];
         NSDictionary *info = [NSDictionary dictionaryWithContentsOfFile:infoPath];
         title = [info objectForKey:@"DocSetFeedName"];
-        
-        
     }
     
     return self;
     
+}
+
+-(NSString *)anchorForNode:(NSManagedObject*)node{
+    
+    return [node valueForKey:@"kAnchor"];
+    
+}
+
+- (NSURL *)URLForNode:(NSManagedObject *)node
+{
+    NSString *nodePath = [node valueForKey:@"kPath"];
+    NSString *fullPath = [[path stringByAppendingPathComponent:@"Contents/Resources/Documents"] stringByAppendingPathComponent:nodePath];
+    NSURL *URL = [NSURL fileURLWithPath:fullPath];
+    
+    return URL;
 }
 
 - (NSArray*)nodeSectionsForRootNode:(NSManagedObject *)rootNode
@@ -58,9 +71,6 @@
  
 }
 
-- (NSString *)contentPath{
-    return @"//html/body/article";
-}
 
 -(NSString*)ipadCSS{
     return self.iphoneCSS;

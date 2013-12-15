@@ -1,14 +1,14 @@
 //
-//  DocSet.m
+//  GenericDocSet.m
 //  DocSets
 //
 //  Created by Dennis Oberhoff on 10/11/13.
 //
 //
 
-#import "DocSet.h"
+#import "GenericDocSet.h"
 
-@implementation DocSet
+@implementation GenericDocSet
 
 @synthesize path, title, copyright, bundleID;
 
@@ -31,7 +31,7 @@
 		self = nil;
 	}
 	
-	searchQueue = dispatch_queue_create("DocSet Search Queue", NULL);
+	searchQueue = dispatch_queue_create("GenericDocSet Search Queue", NULL);
 	
 	return self;
 }
@@ -286,6 +286,11 @@
         return NO;
     }
     return YES;
+}
+
+-(NSString *)contentPath
+{
+    return @"//html/body/article";    
 }
 
 - (NSManagedObjectContext *)managedObjectContext

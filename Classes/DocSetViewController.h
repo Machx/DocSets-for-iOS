@@ -9,25 +9,25 @@
 #import <UIKit/UIKit.h>
 #import "BookmarksViewController.h"
 
-@class DocSet, DetailViewController;
+@class GenericDocSet, DetailViewController;
 
 @interface DocSetViewController : UITableViewController <UISearchDisplayDelegate, BookmarksViewControllerDelegate> {
 
 	DetailViewController *detailViewController;
-	DocSet *docSet;
+	GenericDocSet *docSet;
 	NSArray *nodeSections;
 	NSArray *searchResults;
 	UISearchDisplayController *searchDisplayController;
 	NSDictionary *iconsByTokenType;
 }
 
-@property (nonatomic, strong) DocSet *docSet;
+@property (nonatomic, strong) GenericDocSet *docSet;
 @property (nonatomic, strong) NSManagedObject *rootNode;
 @property (nonatomic, strong) DetailViewController *detailViewController;
 @property (nonatomic, strong) NSArray *searchResults;
 @property (nonatomic, strong) UISearchDisplayController *searchDisplayController;
 
-- (id)initWithDocSet:(DocSet *)set rootNode:(NSManagedObject *)rootNode;
+- (id)initWithDocSet:(GenericDocSet *)set rootNode:(NSManagedObject *)rootNode;
 
 @end
 

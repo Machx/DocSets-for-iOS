@@ -7,11 +7,9 @@
 //
 
 #import "DetailViewController.h"
-#import "RootViewController.h"
 #import "OutlineViewController.h"
 #import "SwipeSplitViewController.h"
-#import "BookmarksViewController.h"
-#import "DocSet.h"
+#import "GenericDocSet.h"
 #import "BookmarksManager.h"
 #import <GDataXML-HTML/GDataXMLNode.h>
 
@@ -299,7 +297,7 @@
 	[(SwipeSplitViewController *)self.parentViewController showMasterViewControllerAnimated:YES];
 }
 
-- (void)setDocSet:(DocSet *)aDocSet
+- (void)setDocSet:(GenericDocSet *)aDocSet
 {
 	docSet = aDocSet;
 	//bookmarksButtonItem.enabled = [[BookmarksManager sharedBookmarksManager] bookmarksAvailable];
@@ -309,7 +307,7 @@
 #pragma mark -
 #pragma mark Navigation
 
-- (void)showNode:(NSManagedObject *)node inDocSet:(DocSet *)set
+- (void)showNode:(NSManagedObject *)node inDocSet:(GenericDocSet *)set
 {
 	self.docSet = set;
 	NSURL *URL = [self.docSet URLForNode:node];
@@ -331,7 +329,7 @@
 	[self openURL:URL withAnchor:nodeAnchor];
 }
 
-- (void)showToken:(NSDictionary *)tokenInfo inDocSet:(DocSet *)set
+- (void)showToken:(NSDictionary *)tokenInfo inDocSet:(GenericDocSet *)set
 {
 	self.docSet = set;
 	
@@ -519,7 +517,7 @@
 
 - (NSString *)bookPathForURL:(NSURL *)URL
 {
-	//TODO: This should probably also be a method of DocSet...
+	//TODO: This should probably also be a method of GenericDocSet...
 	NSFileManager *fm = [NSFileManager defaultManager];
 	NSString *path = [URL path];
 	NSString *pathForBook = nil;

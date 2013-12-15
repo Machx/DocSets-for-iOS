@@ -1,5 +1,5 @@
 //
-//  DocSet.h
+//  GenericDocSet.h
 //  DocSets
 //
 //  Created by Dennis Oberhoff on 10/11/13.
@@ -9,9 +9,13 @@
 #import <Foundation/Foundation.h>
 #import <GDataXML-HTML/GDataXMLNode.h>
 
-@protocol DocSet <NSObject>
+@protocol DocSetProtocol <NSObject>
 
 @required
+@property (nonatomic, readonly) NSString *ipadCSS;
+@property (nonatomic, readonly) NSString *iphoneCSS;
+@property (nonatomic, readonly) NSString *contentPath;
+
 - (NSURL *)URLForNode:(NSManagedObject *)node;
 - (NSURL *)webURLForNode:(NSManagedObject *)node;
 - (NSURL *)webURLForLocalURL:(NSURL *)localURL;
@@ -25,7 +29,7 @@
 
 typedef void(^DocSetSearchCompletionHandler)(NSString *searchTerm, NSArray *results);
 
-@interface DocSet : NSObject {
+@interface GenericDocSet : NSObject <DocSetProtocol> {
     
     NSString *path;
     NSString *title;
@@ -46,9 +50,6 @@ typedef void(^DocSetSearchCompletionHandler)(NSString *searchTerm, NSArray *resu
 @property (nonatomic, strong, readonly) NSString *title;
 @property (nonatomic, strong, readonly) NSString *copyright;
 @property (nonatomic, strong, readonly) NSString *bundleID;
-@property (nonatomic, readonly) NSString *ipadCSS;
-@property (nonatomic, readonly) NSString *iphoneCSS;
-@property (nonatomic, readonly) NSString *contentPath;
 @property (nonatomic, strong, readonly) NSManagedObjectContext *managedObjectContext;
 @property (nonatomic, strong, readonly) NSPersistentStoreCoordinator *persistentStoreCoordinator;
 

@@ -6,8 +6,8 @@
 //
 //
 
-#import "AppleDepDocSet.h"
+#import "AppleDeprecatedDocSet.h"
 
-@interface CocoaDocSet : AppleDepDocSet
+@interface CocoaDocSet : GenericDocSet
 
 @end

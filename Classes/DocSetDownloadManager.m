@@ -7,11 +7,9 @@
 //
 
 #import "DocSetDownloadManager.h"
-#import <GDataXML-HTML/GDataXMLNode.h>
-#import "AppleDepDocSet.h"
+#import "AppleDeprecatedDocSet.h"
 #import "AppleDocSet.h"
 #import "CocoaDocSet.h"
-#import "DashDocSet.h"
 #import "xar.h"
 #include <sys/xattr.h>
 
@@ -98,7 +96,7 @@
             NSString *infoPath = [fullPath stringByAppendingPathComponent:@"Contents/Info.plist"];
             NSDictionary *infoDict = [NSDictionary dictionaryWithContentsOfFile:infoPath];
 
-            DocSet *docSet;
+            GenericDocSet *docSet;
             
             NSString *xcodeVersion = infoDict[@"DocSetMinimumXcodeVersion"];
             BOOL *isDashDocset = [infoDict[@"isDashDocset"] boolValue];
@@ -112,12 +110,12 @@
                 } else if (xcodeMajorVersion >= 5) {
                     docSet = [[AppleDocSet alloc] initWithPath:fullPath];
                 } else {
-                    docSet = [[AppleDepDocSet alloc] initWithPath:fullPath];
+                    docSet = [[AppleDeprecatedDocSet alloc] initWithPath:fullPath];
                 }
             }
             
             else if (isDashDocset) {
-                docSet = [[DashDocSet alloc] initWithPath:fullPath];
+            //    docSet = [[DashDocSet alloc] initWithPath:fullPath];
             }
         
             if (docSet) [loadedSets addObject:docSet];
@@ -206,16 +204,16 @@
 }
 
 
-- (void)deleteDocSet:(DocSet *)docSetToDelete
+- (void)deleteDocSet:(GenericDocSet *)docSetToDelete
 {
 	[[NSNotificationCenter defaultCenter] postNotificationName:DocSetWillBeDeletedNotification object:docSetToDelete userInfo:nil];
 	[[NSFileManager defaultManager] removeItemAtPath:docSetToDelete.path error:NULL];
 	[self reloadDownloadedDocSets];
 }
 
-- (DocSet *)downloadedDocSetWithName:(NSString *)docSetName
+- (GenericDocSet *)downloadedDocSetWithName:(NSString *)docSetName
 {
-	for (DocSet *docSet in _downloadedDocSets) {
+	for (GenericDocSet *docSet in _downloadedDocSets) {
 		if ([[docSet.path lastPathComponent] isEqualToString:docSetName]) {
 			return docSet;
 		}
@@ -271,7 +269,7 @@
     [self toggleIdleTimerIfNeeded];
 	
 	[[[UIAlertView alloc] initWithTitle:NSLocalizedString(@"Download Failed", nil) 
-								 message:NSLocalizedString(@"An error occured while trying to download the DocSet.", nil) 
+								 message:NSLocalizedString(@"An error occured while trying to download the GenericDocSet.", nil)
 								delegate:nil 
 					   cancelButtonTitle:NSLocalizedString(@"OK", nil) 
 					   otherButtonTitles:nil] show];

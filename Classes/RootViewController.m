@@ -11,7 +11,7 @@
 #import "DocSetViewController.h"
 #import "DownloadViewController.h"
 #import "DocSetDownloadManager.h"
-#import "DocSet.h"
+#import "GenericDocSet.h"
 #import "AboutViewController.h"
 
 #define FIRST_USE_ALERT_TAG		1
@@ -133,7 +133,7 @@
 		cell.imageView.image = [UIImage imageNamed:@"DocSet.png"];
     }
     
-	DocSet *docSet = [[[DocSetDownloadManager sharedDownloadManager] downloadedDocSets] objectAtIndex:indexPath.row];
+	GenericDocSet *docSet = [[[DocSetDownloadManager sharedDownloadManager] downloadedDocSets] objectAtIndex:indexPath.row];
     cell.textLabel.text = docSet.title;
 	cell.detailTextLabel.text = docSet.copyright;
 	
@@ -143,7 +143,7 @@
 - (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath
 {
 	if (editingStyle == UITableViewCellEditingStyleDelete) {
-		DocSet *docSetToDelete = [[[DocSetDownloadManager sharedDownloadManager] downloadedDocSets] objectAtIndex:indexPath.row];
+		GenericDocSet *docSetToDelete = [[[DocSetDownloadManager sharedDownloadManager] downloadedDocSets] objectAtIndex:indexPath.row];
 		[[DocSetDownloadManager sharedDownloadManager] deleteDocSet:docSetToDelete];
 		[tableView deleteRowsAtIndexPaths:[NSArray arrayWithObject:indexPath] withRowAnimation:UITableViewRowAnimationAutomatic];
 	}
@@ -151,7 +151,7 @@
 
 - (void)tableView:(UITableView *)aTableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath 
 {
-	DocSet *selectedDocSet = [[[DocSetDownloadManager sharedDownloadManager] downloadedDocSets] objectAtIndex:indexPath.row];
+	GenericDocSet *selectedDocSet = [[[DocSetDownloadManager sharedDownloadManager] downloadedDocSets] objectAtIndex:indexPath.row];
 	DocSetViewController *docSetViewController = [[DocSetViewController alloc] initWithDocSet:selectedDocSet rootNode:nil];
 	docSetViewController.detailViewController = self.detailViewController;
 	[self.navigationController pushViewController:docSetViewController animated:YES];
