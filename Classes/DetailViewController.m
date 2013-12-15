@@ -422,8 +422,6 @@
     
 		NSString *html = [NSString stringWithContentsOfURL:URL encoding:NSUTF8StringEncoding error:NULL];
         
-        NSLog(@"Path: %@", URL.path);
-        
 		if ([[URL path] rangeOfString:@"__cached__"].location == NSNotFound) {
             
             NSString *customCSS;
@@ -436,7 +434,7 @@
             
             GDataXMLDocument *parser = [[GDataXMLDocument alloc] initWithHTMLString:html encoding:NSUTF8StringEncoding error:NULL];
             
-            GDataXMLElement *article = [parser nodesForXPath:docSet.contentPath error:nil][0];
+            GDataXMLNode *article = [parser firstNodeForXPath:docSet.contentPath error:NULL];
             GDataXMLElement *complete = [[GDataXMLElement alloc] initWithHTMLString:@"<html></html>" error:NULL];
             GDataXMLElement *meta = [[GDataXMLElement alloc] initWithHTMLString:@"<meta name=\"viewport\" user-scalable=\"0\" content=\"width = device-width, initial-scale=1.0\"/> <meta charset=\"utf-8\">" error:NULL];
             
