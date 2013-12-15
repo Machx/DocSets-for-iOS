@@ -7,7 +7,7 @@
 //
 
 #import "DocSetDownloadManager.h"
-#import <XMLDictionary/XMLDictionary.h>
+#import <GDataXML-HTML/GDataXMLNode.h>
 #import "AppleDepDocSet.h"
 #import "AppleDocSet.h"
 #import "CocoaDocSet.h"
@@ -192,9 +192,12 @@
                                        queue:queue
                            completionHandler:^(NSURLResponse *response, NSData *data, NSError *connectionError) {
         
-                               XMLDictionaryParser *parser = [[XMLDictionaryParser alloc] init];
-                               NSDictionary *dict = [parser dictionaryWithData:data];
-                               NSString *downloadURL = dict[@"entry"][@"link"][@"_href"];
+                               GDataXMLDocument *parser = [[GDataXMLDocument alloc] initWithData:data encoding:NSUTF8StringEncoding error:NULL];
+                               
+                               GDataXMLElement *entryElement = [parser.rootElement elementsForName:@"entry"][0];
+                               GDataXMLElement *linkElement = [entryElement elementsForName:@"link"][0];
+                               
+                               NSString *downloadURL = [linkElement attributeForName:@"href"].stringValue;
                                [self downloadDocSetAtURL:downloadURL];
 
      }];

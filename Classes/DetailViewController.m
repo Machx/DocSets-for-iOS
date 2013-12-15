@@ -13,8 +13,6 @@
 #import "BookmarksViewController.h"
 #import "DocSet.h"
 #import "BookmarksManager.h"
-
-#import <XMLDictionary/XMLDictionary.h>
 #import <GDataXML-HTML/GDataXMLNode.h>
 
 #define EXTERNAL_LINK_ALERT_TAG	1
