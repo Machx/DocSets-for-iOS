@@ -70,11 +70,14 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    
  	[self layoutViewControllers];   
 }
 
 - (void)viewDidAppear:(BOOL)animated
 {
+    [super viewDidAppear:animated];
+    
 	if (UIInterfaceOrientationIsPortrait(self.interfaceOrientation)) {
 		[self showMasterViewControllerAnimated:YES];
 	}
