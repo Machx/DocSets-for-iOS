@@ -84,7 +84,6 @@
 
 - (void)loadView
 {
-	[super loadView];
 	self.view.backgroundColor = [UIColor colorWithWhite:0.95 alpha:1.0];
 	
 	titleLabel = [[UILabel alloc] initWithFrame:CGRectMake(0, 0, 360, 34)];

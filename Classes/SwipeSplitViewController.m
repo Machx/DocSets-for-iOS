@@ -36,9 +36,7 @@
 }
 
 - (void)loadView
-{
-	[super loadView];
-	
+{	
 	self.detailViewController.view.autoresizingMask = UIViewAutoresizingFlexibleHeight | UIViewAutoresizingFlexibleWidth;
 	self.masterViewController.view.autoresizingMask = UIViewAutoresizingFlexibleRightMargin | UIViewAutoresizingFlexibleHeight;
 	

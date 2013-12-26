@@ -60,9 +60,7 @@
 }
 
 - (void)loadView
-{
-	[super loadView];
-	
+{	
 	UISearchBar *searchBar = [[UISearchBar alloc] initWithFrame:CGRectMake(0, 0, self.view.bounds.size.width, 44)];
 	searchBar.scopeButtonTitles = [NSArray arrayWithObjects:NSLocalizedString(@"API",nil), NSLocalizedString(@"Title",nil), nil];
 	searchBar.selectedScopeButtonIndex = 0;

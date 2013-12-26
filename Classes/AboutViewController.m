@@ -14,7 +14,6 @@
 
 - (void)loadView
 {
-	[super loadView];
 	self.title = NSLocalizedString(@"About DocSets", nil);
 	self.webView = [[UIWebView alloc] initWithFrame:self.view.bounds];
 	self.webView.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight;
