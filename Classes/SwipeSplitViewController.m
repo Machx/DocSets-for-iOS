@@ -36,7 +36,9 @@
 }
 
 - (void)loadView
-{	
+{
+    UIView *contentView = [[UIView alloc] initWithFrame:[[UIScreen mainScreen] applicationFrame]];
+    
 	self.detailViewController.view.autoresizingMask = UIViewAutoresizingFlexibleHeight | UIViewAutoresizingFlexibleWidth;
 	self.masterViewController.view.autoresizingMask = UIViewAutoresizingFlexibleRightMargin | UIViewAutoresizingFlexibleHeight;
 	
@@ -52,18 +54,23 @@
     self.masterContainerView = [[UIImageView alloc] initWithImage:image];
 	_masterContainerView.userInteractionEnabled = YES;
 	_masterContainerView.image = nil;
-	
-	[self layoutViewControllers];
-	
-	[self.view addSubview:self.detailViewController.view];
+		
+	[contentView addSubview:self.detailViewController.view];
 	self.masterViewController.view.frame = CGRectInset(_masterContainerView.bounds, 3, 3);
 	//self.masterViewController.view.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight;
 	[_masterContainerView addSubview:self.masterViewController.view];
-	[self.view addSubview:_masterContainerView];
+	[contentView addSubview:_masterContainerView];
 	
 	UISwipeGestureRecognizer *rightSwipeRecognizer = [[UISwipeGestureRecognizer alloc] initWithTarget:self action:@selector(rightSwipe:)];
 	rightSwipeRecognizer.direction = UISwipeGestureRecognizerDirectionRight;
 	[self.detailViewController.view addGestureRecognizer:rightSwipeRecognizer];
+    
+    self.view = contentView;
+}
+
+- (void)viewDidLoad {
+    [super viewDidLoad];
+ 	[self layoutViewControllers];   
 }
 
 - (void)viewDidAppear:(BOOL)animated

@@ -14,13 +14,16 @@
 
 - (void)loadView
 {
-	self.title = NSLocalizedString(@"About DocSets", nil);
-	self.webView = [[UIWebView alloc] initWithFrame:self.view.bounds];
+    UIView *contentView = [[UIView alloc] initWithFrame:[[UIScreen mainScreen] applicationFrame]];
+    self.title = NSLocalizedString(@"About DocSets", nil);
+	self.webView = [[UIWebView alloc] initWithFrame:contentView.bounds];
 	self.webView.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight;
 	self.webView.delegate = self;
 	self.webView.dataDetectorTypes = UIDataDetectorTypeNone;
-	[self.view addSubview:self.webView];
+	[contentView addSubview:self.webView];
 	self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemDone target:self action:@selector(done:)];
+    
+    self.view = contentView;
 }
 
 - (void)done:(id)sender
