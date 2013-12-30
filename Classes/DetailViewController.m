@@ -84,8 +84,9 @@
 
 - (void)loadView
 {
-	[super loadView];
-	self.view.backgroundColor = [UIColor colorWithWhite:0.95 alpha:1.0];
+    UIView *contentView = [[UIView alloc] initWithFrame:[[UIScreen mainScreen] applicationFrame]];
+                           
+	contentView.backgroundColor = [UIColor colorWithWhite:0.95 alpha:1.0];
 	
 	titleLabel = [[UILabel alloc] initWithFrame:CGRectMake(0, 0, 360, 34)];
 	titleLabel.textColor = [UIColor colorWithRed:0.443 green:0.471 blue:0.502 alpha:1.0];
@@ -97,17 +98,17 @@
 	titleLabel.autoresizingMask = UIViewAutoresizingFlexibleLeftMargin | UIViewAutoresizingFlexibleRightMargin;
 	
 	CGFloat topToolbarHeight = ([[UIDevice currentDevice] userInterfaceIdiom] == UIUserInterfaceIdiomPad) ? 64.0 : 0.0; //44.0 iOS6 original
-	webView.frame = CGRectMake(0, topToolbarHeight, self.view.bounds.size.width, self.view.bounds.size.height - topToolbarHeight);
+	webView.frame = CGRectMake(0, topToolbarHeight, contentView.bounds.size.width, contentView.bounds.size.height - topToolbarHeight);
 	webView.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight;
 	webView.scalesPageToFit = YES;//([[UIDevice currentDevice] userInterfaceIdiom] == UIUserInterfaceIdiomPad);
 	
-	[self.view addSubview:webView];
+	[contentView addSubview:webView];
 	
 	if ([[UIDevice currentDevice] userInterfaceIdiom] == UIUserInterfaceIdiomPad) {
-		toolbar = [[UIToolbar alloc] initWithFrame:CGRectMake(0, 0, self.view.bounds.size.width, topToolbarHeight)];
+		toolbar = [[UIToolbar alloc] initWithFrame:CGRectMake(0, 0, contentView.bounds.size.width, topToolbarHeight)];
 		toolbar.autoresizingMask = UIViewAutoresizingFlexibleWidth;
 		toolbar.items = UIInterfaceOrientationIsPortrait(self.interfaceOrientation) ? portraitToolbarItems : landscapeToolbarItems;
-		[self.view addSubview:toolbar];
+		[contentView addSubview:toolbar];
 		titleLabel.center = CGPointMake(toolbar.bounds.size.width * 0.5, toolbar.bounds.size.height * 0.5);
 		[toolbar addSubview:titleLabel];
 	} else {
@@ -121,7 +122,9 @@
 	coverView = [[UIView alloc] initWithFrame:webView.frame];
 	coverView.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"whitey.png"]];
 	coverView.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight;
-	[self.view addSubview:coverView];
+	[contentView addSubview:coverView];
+    
+    self.view = contentView;
 }
 
 - (void)docSetWillBeDeleted:(NSNotification *)notification
