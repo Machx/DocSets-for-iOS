@@ -61,15 +61,15 @@
 
 - (void)loadView
 {
-	[super loadView];
-	
-	UISearchBar *searchBar = [[UISearchBar alloc] initWithFrame:CGRectMake(0, 0, self.view.bounds.size.width, 44)];
+    UITableView *theTableView = [[UITableView alloc] initWithFrame:[[UIScreen mainScreen] applicationFrame]];
+    
+	UISearchBar *searchBar = [[UISearchBar alloc] initWithFrame:CGRectMake(0, 0, theTableView.bounds.size.width, 44)];
 	searchBar.scopeButtonTitles = [NSArray arrayWithObjects:NSLocalizedString(@"API",nil), NSLocalizedString(@"Title",nil), nil];
 	searchBar.selectedScopeButtonIndex = 0;
 	searchBar.showsScopeBar = NO;
-	self.tableView.tableHeaderView = searchBar;
+	theTableView.tableHeaderView = searchBar;
 	
-	self.tableView.backgroundColor = [UIColor colorWithWhite:0.96 alpha:1.0];
+    theTableView.backgroundColor = [UIColor colorWithWhite:0.96 alpha:1.0];
 	
 	self.searchDisplayController = [[UISearchDisplayController alloc] initWithSearchBar:searchBar contentsController:self];
 	searchDisplayController.delegate = self;
@@ -80,6 +80,8 @@
 		self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemBookmarks target:self action:@selector(showBookmarks:)];
 		self.navigationItem.rightBarButtonItem.style = UIBarButtonItemStylePlain;
 	}
+    
+    self.tableView = theTableView;
 }
 
 - (void)viewDidAppear:(BOOL)animated
