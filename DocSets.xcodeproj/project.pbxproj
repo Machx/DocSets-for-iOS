@@ -204,7 +204,6 @@
 		7F1D42F614D1632700A85CB3 /* xar.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = xar.h; path = OtherSources/lib/xar/xar.h; sourceTree = SOURCE_ROOT; };
 		7F1D42F714D1632700A85CB3 /* zxar.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = zxar.c; path = OtherSources/lib/xar/zxar.c; sourceTree = SOURCE_ROOT; };
 		7F1D42F814D1632700A85CB3 /* zxar.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = zxar.h; path = OtherSources/lib/xar/zxar.h; sourceTree = SOURCE_ROOT; };
-		7F1D430E14D1633B00A85CB3 /* include */ = {isa = PBXFileReference; lastKnownFileType = folder; name = include; path = OtherSources/lib/include; sourceTree = "<group>"; };
 		7F1D430F14D1634800A85CB3 /* libcrypto.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libcrypto.a; path = OtherSources/lib/libcrypto.a; sourceTree = "<group>"; };
 		7F1D431314D164A400A85CB3 /* Class@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Class@2x.png"; sourceTree = "<group>"; };
 		7F1D431414D164A400A85CB3 /* Const@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Const@2x.png"; sourceTree = "<group>"; };
@@ -358,7 +357,6 @@
 		29B97315FDCFA39411CA2CEA /* Other Sources */ = {
 			isa = PBXGroup;
 			children = (
-				7F1D430E14D1633B00A85CB3 /* include */,
 				7FACA8F114CC5F9300BADCC8 /* xar */,
 				7F1D42C414D1624F00A85CB3 /* main.m */,
 				7F1D42C314D1624700A85CB3 /* DocSets_Prefix.pch */,
@@ -864,7 +862,7 @@
 			baseConfigurationReference = 68548926250C4F93A44CF8C0 /* Pods.xcconfig */;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
-				ARCHS = "$(ARCHS_STANDARD_INCLUDING_64_BIT)";
+				ARCHS = "$(ARCHS_STANDARD)";
 				CLANG_ENABLE_OBJC_ARC = YES;
 				CODE_SIGN_ENTITLEMENTS = DocSets.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Developer: Dennis Oberhoff (34UJY3FWG2)";
@@ -881,16 +879,17 @@
 					"\"${PODS_ROOT}/Headers\"/**",
 				);
 				INFOPLIST_FILE = Resources/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 6.1;
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
 					"\"$(SDKROOT)/usr/lib/system\"",
 					"\"$(SRCROOT)\"",
 					"\"$(SRCROOT)/OtherSources/lib\"",
 				);
+				ONLY_ACTIVE_ARCH = YES;
 				PRODUCT_NAME = DocSets;
 				PROVISIONING_PROFILE = "";
-				VALID_ARCHS = armv7;
+				VALID_ARCHS = "armv7 armv7s";
 			};
 			name = Debug;
 		};
@@ -899,7 +898,7 @@
 			baseConfigurationReference = 68548926250C4F93A44CF8C0 /* Pods.xcconfig */;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
-				ARCHS = "$(ARCHS_STANDARD_INCLUDING_64_BIT)";
+				ARCHS = "$(ARCHS_STANDARD)";
 				CLANG_ENABLE_OBJC_ARC = YES;
 				CODE_SIGN_ENTITLEMENTS = DocSets.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Developer: Dennis Oberhoff (34UJY3FWG2)";
@@ -914,17 +913,18 @@
 					"\"${PODS_ROOT}/Headers\"/**",
 				);
 				INFOPLIST_FILE = Resources/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 6.1;
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
 					"\"$(SDKROOT)/usr/lib/system\"",
 					"\"$(SRCROOT)\"",
 					"\"$(SRCROOT)/OtherSources/lib\"",
 				);
+				ONLY_ACTIVE_ARCH = YES;
 				PRODUCT_NAME = DocSets;
 				PROVISIONING_PROFILE = "";
 				VALIDATE_PRODUCT = YES;
-				VALID_ARCHS = armv7;
+				VALID_ARCHS = "armv7 armv7s";
 			};
 			name = Release;
 		};
