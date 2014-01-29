@@ -96,7 +96,7 @@
             NSString *infoPath = [fullPath stringByAppendingPathComponent:@"Contents/Info.plist"];
             NSDictionary *infoDict = [NSDictionary dictionaryWithContentsOfFile:infoPath];
 
-            GenericDocSet *docSet;
+            DocSet *docSet;
             
             NSString *xcodeVersion = infoDict[@"DocSetMinimumXcodeVersion"];
             BOOL *isDashDocset = [infoDict[@"isDashDocset"] boolValue];
@@ -204,16 +204,16 @@
 }
 
 
-- (void)deleteDocSet:(GenericDocSet *)docSetToDelete
+- (void)deleteDocSet:(DocSet *)docSetToDelete
 {
 	[[NSNotificationCenter defaultCenter] postNotificationName:DocSetWillBeDeletedNotification object:docSetToDelete userInfo:nil];
 	[[NSFileManager defaultManager] removeItemAtPath:docSetToDelete.path error:NULL];
 	[self reloadDownloadedDocSets];
 }
 
-- (GenericDocSet *)downloadedDocSetWithName:(NSString *)docSetName
+- (DocSet *)downloadedDocSetWithName:(NSString *)docSetName
 {
-	for (GenericDocSet *docSet in _downloadedDocSets) {
+	for (DocSet *docSet in _downloadedDocSets) {
 		if ([[docSet.path lastPathComponent] isEqualToString:docSetName]) {
 			return docSet;
 		}
@@ -269,7 +269,7 @@
     [self toggleIdleTimerIfNeeded];
 	
 	[[[UIAlertView alloc] initWithTitle:NSLocalizedString(@"Download Failed", nil) 
-								 message:NSLocalizedString(@"An error occured while trying to download the GenericDocSet.", nil)
+								 message:NSLocalizedString(@"An error occured while trying to download the DocSet.", nil)
 								delegate:nil 
 					   cancelButtonTitle:NSLocalizedString(@"OK", nil) 
 					   otherButtonTitles:nil] show];

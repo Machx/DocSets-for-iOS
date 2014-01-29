@@ -1,5 +1,5 @@
 //
-//  GenericDocSet.h
+//  DocSet.h
 //  DocSets
 //
 //  Created by Dennis Oberhoff on 10/11/13.
@@ -29,7 +29,7 @@
 
 typedef void(^DocSetSearchCompletionHandler)(NSString *searchTerm, NSArray *results);
 
-@interface GenericDocSet : NSObject <DocSetProtocol> {
+@interface DocSet : NSObject <DocSetProtocol> {
     
     NSString *path;
     NSString *title;

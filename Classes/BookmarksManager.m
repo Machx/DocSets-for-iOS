@@ -7,7 +7,7 @@
 //
 
 #import "BookmarksManager.h"
-#import "GenericDocSet.h"
+#import "DocSet.h"
 #import "NSString+RelativePath.h"
 
 @interface BookmarksManager ()
@@ -379,7 +379,7 @@
 
 #pragma mark -
 
-- (NSMutableArray *)bookmarksForDocSet:(GenericDocSet *)docSet
+- (NSMutableArray *)bookmarksForDocSet:(DocSet *)docSet
 {
 	if (!self.bookmarks) return nil;
 	NSMutableArray *bookmarksForDocSet = [self.bookmarks objectForKey:docSet.bundleID];
@@ -390,7 +390,7 @@
 	return bookmarksForDocSet;
 }
 
-- (BOOL)addBookmarkWithURL:(NSString *)bookmarkURL title:(NSString *)bookmarkTitle subtitle:(NSString *)subtitle forDocSet:(GenericDocSet *)docSet
+- (BOOL)addBookmarkWithURL:(NSString *)bookmarkURL title:(NSString *)bookmarkTitle subtitle:(NSString *)subtitle forDocSet:(DocSet *)docSet
 {
 	if (!self.bookmarks) return NO;
 	
@@ -432,7 +432,7 @@
 	return relativePath;
 }
 
-- (NSURL *)URLForBookmark:(NSDictionary *)bookmark inDocSet:(GenericDocSet *)docSet
+- (NSURL *)URLForBookmark:(NSDictionary *)bookmark inDocSet:(DocSet *)docSet
 {
 	NSString *relativeBookmarkPath = [bookmark objectForKey:@"path"];
 	NSString *docSetPath = docSet.path;
@@ -444,13 +444,13 @@
 	return bookmarkURL;
 }
 
-- (NSURL *)webURLForBookmark:(NSDictionary *)bookmark inDocSet:(GenericDocSet *)docSet
+- (NSURL *)webURLForBookmark:(NSDictionary *)bookmark inDocSet:(DocSet *)docSet
 {
 	NSURL *localBookmarkURL = [self URLForBookmark:bookmark inDocSet:docSet];
 	return [docSet webURLForLocalURL:localBookmarkURL];
 }
 
-- (BOOL)deleteBookmarkAtIndex:(NSInteger)bookmarkIndex fromDocSet:(GenericDocSet *)docSet
+- (BOOL)deleteBookmarkAtIndex:(NSInteger)bookmarkIndex fromDocSet:(DocSet *)docSet
 {
 	if (!self.bookmarks) return NO;
 	NSMutableArray *bookmarks = [self bookmarksForDocSet:docSet];
@@ -459,7 +459,7 @@
 	return YES;
 }
 
-- (BOOL)moveBookmarkAtIndex:(NSInteger)fromIndex inDocSet:(GenericDocSet *)docSet toIndex:(NSInteger)toIndex
+- (BOOL)moveBookmarkAtIndex:(NSInteger)fromIndex inDocSet:(DocSet *)docSet toIndex:(NSInteger)toIndex
 {
 	if (!self.bookmarks) return NO;
 	

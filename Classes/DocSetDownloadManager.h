@@ -14,7 +14,7 @@
 #define DocSetDownloadManagerIdleTimerToggledNotification           @"DocSetDownloadManagerIdleTimerToggledNotification"
 #define DocSetDownloadFinishedNotification							@"DocSetDownloadFinishedNotification"
 
-@class GenericDocSet, DocSetDownload;
+@class DocSet, DocSetDownload;
 
 @interface DocSetDownloadManager : NSObject {
 
@@ -44,10 +44,10 @@
 - (void)updateAvailableDocSetsFromWeb;
 - (void)downloadDocSetAtURL:(NSString *)URL;
 - (void)downloadDocSetFromAtom:(NSURL *)URL;
-- (void)deleteDocSet:(GenericDocSet *)docSetToDelete;
+- (void)deleteDocSet:(DocSet *)docSetToDelete;
 - (DocSetDownload *)downloadForURL:(NSString *)URL;
 - (void)stopDownload:(DocSetDownload *)download;
-- (GenericDocSet *)downloadedDocSetWithName:(NSString *)docSetName;
+- (DocSet *)downloadedDocSetWithName:(NSString *)docSetName;
 
 @end
 

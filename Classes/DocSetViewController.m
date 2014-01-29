@@ -7,7 +7,7 @@
 //
 
 #import "DocSetViewController.h"
-#import "GenericDocSet.h"
+#import "DocSet.h"
 #import "DetailViewController.h"
 
 #define SEARCH_SPINNER_TAG	1
@@ -24,7 +24,7 @@
 
 @synthesize docSet, rootNode, detailViewController, searchResults, searchDisplayController;
 
-- (id)initWithDocSet:(GenericDocSet *)set rootNode:(NSManagedObject *)node
+- (id)initWithDocSet:(DocSet *)set rootNode:(NSManagedObject *)node
 {
 	self = [super initWithStyle:UITableViewStylePlain];
 	

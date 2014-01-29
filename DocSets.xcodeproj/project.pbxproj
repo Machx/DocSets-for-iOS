@@ -126,7 +126,7 @@
 		7FF70C1512AD3FB8001FF09F /* libz.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 7FF70C1412AD3FB8001FF09F /* libz.dylib */; };
 		E1084E78182F9A7900E60D1C /* Apple7DocSet.m in Sources */ = {isa = PBXBuildFile; fileRef = E1084E77182F9A7900E60D1C /* Apple7DocSet.m */; };
 		E178362E182E7890003FEE28 /* Apple6DocSet.m in Sources */ = {isa = PBXBuildFile; fileRef = E178362D182E7890003FEE28 /* Apple6DocSet.m */; };
-		E1783635182F961B003FEE28 /* GenericDocSet.m in Sources */ = {isa = PBXBuildFile; fileRef = E1783634182F961A003FEE28 /* GenericDocSet.m */; };
+		E1783635182F961B003FEE28 /* DocSet.m in Sources */ = {isa = PBXBuildFile; fileRef = E1783634182F961A003FEE28 /* DocSet.m */; };
 		E19D187818310BE00007D3B6 /* CocoaDocSet.m in Sources */ = {isa = PBXBuildFile; fileRef = E19D187718310BE00007D3B6 /* CocoaDocSet.m */; };
 /* End PBXBuildFile section */
 
@@ -294,8 +294,8 @@
 		E1084E77182F9A7900E60D1C /* Apple7DocSet.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Apple7DocSet.m; sourceTree = "<group>"; };
 		E178362C182E7890003FEE28 /* Apple6DocSet.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Apple6DocSet.h; sourceTree = "<group>"; };
 		E178362D182E7890003FEE28 /* Apple6DocSet.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Apple6DocSet.m; sourceTree = "<group>"; };
-		E1783633182F961A003FEE28 /* GenericDocSet.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GenericDocSet.h; sourceTree = "<group>"; };
-		E1783634182F961A003FEE28 /* GenericDocSet.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GenericDocSet.m; sourceTree = "<group>"; };
+		E1783633182F961A003FEE28 /* DocSet.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DocSet.h; sourceTree = "<group>"; };
+		E1783634182F961A003FEE28 /* DocSet.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DocSet.m; sourceTree = "<group>"; };
 		E19D187618310BE00007D3B6 /* CocoaDocSet.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CocoaDocSet.h; sourceTree = "<group>"; };
 		E19D187718310BE00007D3B6 /* CocoaDocSet.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CocoaDocSet.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -620,8 +620,8 @@
 		E1084E79182FCF3900E60D1C /* DocSet */ = {
 			isa = PBXGroup;
 			children = (
-				E1783633182F961A003FEE28 /* GenericDocSet.h */,
-				E1783634182F961A003FEE28 /* GenericDocSet.m */,
+				E1783633182F961A003FEE28 /* DocSet.h */,
+				E1783634182F961A003FEE28 /* DocSet.m */,
 				E1084E76182F9A7900E60D1C /* Apple7DocSet.h */,
 				E1084E77182F9A7900E60D1C /* Apple7DocSet.m */,
 				E178362C182E7890003FEE28 /* Apple6DocSet.h */,
@@ -841,7 +841,7 @@
 				7F1D430714D1632700A85CB3 /* macho.c in Sources */,
 				7F1D430814D1632700A85CB3 /* script.c in Sources */,
 				7F1D430914D1632700A85CB3 /* signature.c in Sources */,
-				E1783635182F961B003FEE28 /* GenericDocSet.m in Sources */,
+				E1783635182F961B003FEE28 /* DocSet.m in Sources */,
 				7F1D430A14D1632700A85CB3 /* stat.c in Sources */,
 				7F1D430B14D1632700A85CB3 /* subdoc.c in Sources */,
 				7F1D430C14D1632700A85CB3 /* util.c in Sources */,

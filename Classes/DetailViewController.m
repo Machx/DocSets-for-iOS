@@ -9,7 +9,7 @@
 #import "DetailViewController.h"
 #import "OutlineViewController.h"
 #import "SwipeSplitViewController.h"
-#import "GenericDocSet.h"
+#import "DocSet.h"
 #import "BookmarksManager.h"
 #import <GDataXML-HTML/GDataXMLNode.h>
 
@@ -310,7 +310,7 @@
 	[(SwipeSplitViewController *)self.parentViewController showMasterViewControllerAnimated:YES];
 }
 
-- (void)setDocSet:(GenericDocSet *)aDocSet
+- (void)setDocSet:(DocSet *)aDocSet
 {
 	docSet = aDocSet;
 	//bookmarksButtonItem.enabled = [[BookmarksManager sharedBookmarksManager] bookmarksAvailable];
@@ -320,7 +320,7 @@
 #pragma mark -
 #pragma mark Navigation
 
-- (void)showNode:(NSManagedObject *)node inDocSet:(GenericDocSet *)set
+- (void)showNode:(NSManagedObject *)node inDocSet:(DocSet *)set
 {
 	self.docSet = set;
 	NSURL *URL = [self.docSet URLForNode:node];
@@ -341,7 +341,7 @@
 	[self openURL:URL withAnchor:nodeAnchor];
 }
 
-- (void)showToken:(NSDictionary *)tokenInfo inDocSet:(GenericDocSet *)set
+- (void)showToken:(NSDictionary *)tokenInfo inDocSet:(DocSet *)set
 {
 	self.docSet = set;
 	

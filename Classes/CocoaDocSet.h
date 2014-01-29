@@ -8,6 +8,6 @@
 
 #import "Apple6DocSet.h"
 
-@interface CocoaDocSet : GenericDocSet
+@interface CocoaDocSet : DocSet
 
 @end

@@ -9,7 +9,7 @@
 #import <UIKit/UIKit.h>
 #import "BookmarksViewController.h"
 
-@class GenericDocSet, OutlineItem, OutlineViewController;
+@class DocSet, OutlineItem, OutlineViewController;
 
 @interface DetailViewController : UIViewController <UIPopoverControllerDelegate, UISplitViewControllerDelegate, UINavigationControllerDelegate, UIWebViewDelegate, UIAlertViewDelegate, UIActionSheetDelegate, BookmarksViewControllerDelegate> {
 
@@ -32,17 +32,17 @@
 	UIView *coverView;
 	UIWebView *webView;
 	
-	GenericDocSet *docSet;
+	DocSet *docSet;
 	NSDictionary *book;
 	NSString *bookPath;
 	NSURL *selectedExternalLinkURL;
 }
 
-@property (nonatomic, strong) GenericDocSet *docSet;
+@property (nonatomic, strong) DocSet *docSet;
 @property (nonatomic, strong) NSURL *currentURL;
 
-- (void)showNode:(NSManagedObject *)node inDocSet:(GenericDocSet *)docSet;
-- (void)showToken:(NSDictionary *)tokenInfo inDocSet:(GenericDocSet *)docSet;
+- (void)showNode:(NSManagedObject *)node inDocSet:(DocSet *)docSet;
+- (void)showToken:(NSDictionary *)tokenInfo inDocSet:(DocSet *)docSet;
 - (void)showOutlineItem:(OutlineItem *)outlineItem;
 - (void)openURL:(NSURL *)URL withAnchor:(NSString *)a;
 - (NSString *)bookPathForURL:(NSURL *)URL;

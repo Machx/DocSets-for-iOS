@@ -161,7 +161,7 @@
 	BOOL downloaded = [[[DocSetDownloadManager sharedDownloadManager] downloadedDocSetNames] containsObject:name];
 	if (downloaded) {
 		[[[UIAlertView alloc] initWithTitle:NSLocalizedString(@"Already Downloaded", nil) 
-									 message:NSLocalizedString(@"You have already downloaded this GenericDocSet.", nil)
+									 message:NSLocalizedString(@"You have already downloaded this DocSet.", nil)
 									delegate:nil 
 						   cancelButtonTitle:NSLocalizedString(@"OK", nil) 
 						   otherButtonTitles:nil] show];

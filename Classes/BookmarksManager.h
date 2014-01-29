@@ -15,7 +15,7 @@
 #define kBookmarkSyncLogLevel	@"level"
 #define kBookmarkSyncLogDate	@"date"
 
-@class GenericDocSet;
+@class DocSet;
 
 @interface BookmarksManager : NSObject
 
@@ -27,12 +27,12 @@
 
 + (id)sharedBookmarksManager;
 
-- (NSMutableArray *)bookmarksForDocSet:(GenericDocSet *)docSet;
-- (NSURL *)URLForBookmark:(NSDictionary *)bookmark inDocSet:(GenericDocSet *)docSet;
-- (NSURL *)webURLForBookmark:(NSDictionary *)bookmark inDocSet:(GenericDocSet *)docSet;
-- (BOOL)addBookmarkWithURL:(NSString *)bookmarkURL title:(NSString *)bookmarkTitle subtitle:(NSString *)subtitle forDocSet:(GenericDocSet *)docSet;
-- (BOOL)deleteBookmarkAtIndex:(NSInteger)bookmarkIndex fromDocSet:(GenericDocSet *)docSet;
-- (BOOL)moveBookmarkAtIndex:(NSInteger)fromIndex inDocSet:(GenericDocSet *)docSet toIndex:(NSInteger)toIndex;
+- (NSMutableArray *)bookmarksForDocSet:(DocSet *)docSet;
+- (NSURL *)URLForBookmark:(NSDictionary *)bookmark inDocSet:(DocSet *)docSet;
+- (NSURL *)webURLForBookmark:(NSDictionary *)bookmark inDocSet:(DocSet *)docSet;
+- (BOOL)addBookmarkWithURL:(NSString *)bookmarkURL title:(NSString *)bookmarkTitle subtitle:(NSString *)subtitle forDocSet:(DocSet *)docSet;
+- (BOOL)deleteBookmarkAtIndex:(NSInteger)bookmarkIndex fromDocSet:(DocSet *)docSet;
+- (BOOL)moveBookmarkAtIndex:(NSInteger)fromIndex inDocSet:(DocSet *)docSet toIndex:(NSInteger)toIndex;
 
 - (NSData *)bookmarksDataForSharingSyncLog;
 
