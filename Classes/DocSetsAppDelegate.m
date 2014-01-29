@@ -54,19 +54,17 @@
     return YES;
 }
 
-- (BOOL)application:(UIApplication *)application openURL:(NSURL *)url sourceApplication:(NSString *)sourceApplication annotation:(id)annotation{
+- (BOOL)application:(UIApplication *)application openURL:(NSURL *)url sourceApplication:(NSString *)sourceApplication annotation:(id)annotation
+{
     
     if ([url.scheme isEqualToString:@"docs-for-xcode"]) {
         
         DownloadViewController *vc = [[DownloadViewController alloc] initWithStyle:UITableViewStyleGrouped];
         UINavigationController *navController = [[UINavigationController alloc] initWithRootViewController:vc];
         navController.modalPresentationStyle = UIModalPresentationFormSheet;
-        
         [self.window.rootViewController presentViewController:navController animated:YES completion:^{
             [[DocSetDownloadManager sharedDownloadManager] downloadDocSetFromAtom:url];
-            
         }];
-
         
         return YES;
     } else {

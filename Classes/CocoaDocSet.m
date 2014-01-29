@@ -10,10 +10,10 @@
 
 @implementation CocoaDocSet
 
--(id)initWithPath:(NSString *)docSetPath{
+-(id)initWithPath:(NSString *)docSetPath
+{
 
     self = [super initWithPath:docSetPath];
-    
     if (self) {
         NSString *infoPath = [path stringByAppendingPathComponent:@"Contents/Info.plist"];
         NSDictionary *info = [NSDictionary dictionaryWithContentsOfFile:infoPath];
@@ -24,7 +24,8 @@
     
 }
 
--(NSString *)anchorForNode:(NSManagedObject*)node{
+-(NSString *)anchorForNode:(NSManagedObject*)node
+{
     
     return [node valueForKey:@"kAnchor"];
     
@@ -72,13 +73,16 @@
 }
 
 
--(NSString*)ipadCSS{
+-(NSString*)ipadCSS
+{
     return self.iphoneCSS;
 }
 
--(NSString*)iphoneCSS{
-    
+-(NSString*)iphoneCSS
+{
+
     return @"<style><![CDATA[html { -webkit-text-size-adjust: 100%; } #scrollable { overflow-y: auto; -webkit-overflow-scrolling: touch; } body { font-size: 13px; padding: 15px } pre { white-space: pre-wrap !important; } h1 {font-size: 17px !important;} h2 { font-size: 15px !important; } h3 { font-size: 13px !important; } html { font-family: Lucida Grande; } img{ max-width:100% ;height: auto; display: block;} #pageTitle { color : #000; } .jump{ margin-top: 1.75em; color: #3c4c6c; padding-bottom: 2px; } .ul{ list-style: disc outside; margin: 0 0 .833em 1.35em; padding: 0 0 .5em; display: block; list-style-type: disc; } a { color: rgba(51,102,204,1.0); text-decoration: none; } .main-navigation { display: none; }]]></style>";
+
 }
 
 

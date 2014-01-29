@@ -6,7 +6,7 @@
 //
 //
 
-#import "AppleDeprecatedDocSet.h"
+#import "Apple6DocSet.h"
 
 @interface CocoaDocSet : GenericDocSet
 

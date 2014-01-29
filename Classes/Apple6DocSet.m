@@ -1,14 +1,14 @@
 //
-//  AppleDeprecatedDocSet.m
+//  Apple6DocSet.m
 //  DocSets
 //
 //  Created by Dennis Oberhoff on 09/11/13.
 //
 //
 
-#import "AppleDeprecatedDocSet.h"
+#import "Apple6DocSet.h"
 
-@implementation AppleDeprecatedDocSet
+@implementation Apple6DocSet
 
 - (NSURL *)URLForNode:(NSManagedObject *)node
 {

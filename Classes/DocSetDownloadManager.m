@@ -7,8 +7,8 @@
 //
 
 #import "DocSetDownloadManager.h"
-#import "AppleDeprecatedDocSet.h"
-#import "AppleDocSet.h"
+#import "Apple6DocSet.h"
+#import "Apple7DocSet.h"
 #import "CocoaDocSet.h"
 #import "xar.h"
 #include <sys/xattr.h>
@@ -108,9 +108,9 @@
                 if (![vendor isEqualToString:@"Apple"]) {
                     docSet = [[CocoaDocSet alloc] initWithPath:fullPath];
                 } else if (xcodeMajorVersion >= 5) {
-                    docSet = [[AppleDocSet alloc] initWithPath:fullPath];
+                    docSet = [[Apple7DocSet alloc] initWithPath:fullPath];
                 } else {
-                    docSet = [[AppleDeprecatedDocSet alloc] initWithPath:fullPath];
+                    docSet = [[Apple6DocSet alloc] initWithPath:fullPath];
                 }
             }
             
@@ -380,7 +380,7 @@
         
         if ([fileType isEqualToString:@"dmg"]) {
             
-            // extract dmg and pkg
+            // if you implement this, I'm gonna buy you a drink.
             
             
         }

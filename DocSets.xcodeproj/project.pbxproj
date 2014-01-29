@@ -124,8 +124,8 @@
 		7FF70B5412AD15B7001FF09F /* Back.png in Resources */ = {isa = PBXBuildFile; fileRef = 7FF70B5212AD15B7001FF09F /* Back.png */; };
 		7FF70B5512AD15B7001FF09F /* Forward.png in Resources */ = {isa = PBXBuildFile; fileRef = 7FF70B5312AD15B7001FF09F /* Forward.png */; };
 		7FF70C1512AD3FB8001FF09F /* libz.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 7FF70C1412AD3FB8001FF09F /* libz.dylib */; };
-		E1084E78182F9A7900E60D1C /* AppleDocSet.m in Sources */ = {isa = PBXBuildFile; fileRef = E1084E77182F9A7900E60D1C /* AppleDocSet.m */; };
-		E178362E182E7890003FEE28 /* AppleDeprecatedDocSet.m in Sources */ = {isa = PBXBuildFile; fileRef = E178362D182E7890003FEE28 /* AppleDeprecatedDocSet.m */; };
+		E1084E78182F9A7900E60D1C /* Apple7DocSet.m in Sources */ = {isa = PBXBuildFile; fileRef = E1084E77182F9A7900E60D1C /* Apple7DocSet.m */; };
+		E178362E182E7890003FEE28 /* Apple6DocSet.m in Sources */ = {isa = PBXBuildFile; fileRef = E178362D182E7890003FEE28 /* Apple6DocSet.m */; };
 		E1783635182F961B003FEE28 /* GenericDocSet.m in Sources */ = {isa = PBXBuildFile; fileRef = E1783634182F961A003FEE28 /* GenericDocSet.m */; };
 		E19D187818310BE00007D3B6 /* CocoaDocSet.m in Sources */ = {isa = PBXBuildFile; fileRef = E19D187718310BE00007D3B6 /* CocoaDocSet.m */; };
 /* End PBXBuildFile section */
@@ -290,10 +290,10 @@
 		7FF70B5312AD15B7001FF09F /* Forward.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Forward.png; sourceTree = "<group>"; };
 		7FF70C1412AD3FB8001FF09F /* libz.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libz.dylib; path = usr/lib/libz.dylib; sourceTree = SDKROOT; };
 		C456F0E62B4F4C2F8344629C /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
-		E1084E76182F9A7900E60D1C /* AppleDocSet.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AppleDocSet.h; sourceTree = "<group>"; };
-		E1084E77182F9A7900E60D1C /* AppleDocSet.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AppleDocSet.m; sourceTree = "<group>"; };
-		E178362C182E7890003FEE28 /* AppleDeprecatedDocSet.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AppleDeprecatedDocSet.h; sourceTree = "<group>"; };
-		E178362D182E7890003FEE28 /* AppleDeprecatedDocSet.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AppleDeprecatedDocSet.m; sourceTree = "<group>"; };
+		E1084E76182F9A7900E60D1C /* Apple7DocSet.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Apple7DocSet.h; sourceTree = "<group>"; };
+		E1084E77182F9A7900E60D1C /* Apple7DocSet.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Apple7DocSet.m; sourceTree = "<group>"; };
+		E178362C182E7890003FEE28 /* Apple6DocSet.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Apple6DocSet.h; sourceTree = "<group>"; };
+		E178362D182E7890003FEE28 /* Apple6DocSet.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Apple6DocSet.m; sourceTree = "<group>"; };
 		E1783633182F961A003FEE28 /* GenericDocSet.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GenericDocSet.h; sourceTree = "<group>"; };
 		E1783634182F961A003FEE28 /* GenericDocSet.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GenericDocSet.m; sourceTree = "<group>"; };
 		E19D187618310BE00007D3B6 /* CocoaDocSet.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CocoaDocSet.h; sourceTree = "<group>"; };
@@ -622,10 +622,10 @@
 			children = (
 				E1783633182F961A003FEE28 /* GenericDocSet.h */,
 				E1783634182F961A003FEE28 /* GenericDocSet.m */,
-				E1084E76182F9A7900E60D1C /* AppleDocSet.h */,
-				E1084E77182F9A7900E60D1C /* AppleDocSet.m */,
-				E178362C182E7890003FEE28 /* AppleDeprecatedDocSet.h */,
-				E178362D182E7890003FEE28 /* AppleDeprecatedDocSet.m */,
+				E1084E76182F9A7900E60D1C /* Apple7DocSet.h */,
+				E1084E77182F9A7900E60D1C /* Apple7DocSet.m */,
+				E178362C182E7890003FEE28 /* Apple6DocSet.h */,
+				E178362D182E7890003FEE28 /* Apple6DocSet.m */,
 				E19D187618310BE00007D3B6 /* CocoaDocSet.h */,
 				E19D187718310BE00007D3B6 /* CocoaDocSet.m */,
 			);
@@ -820,7 +820,7 @@
 				7FACA8ED14CC371C00BADCC8 /* DocSetDownloadManager.m in Sources */,
 				7FACA8F014CC385D00BADCC8 /* DownloadViewController.m in Sources */,
 				7F8889B414CDEB69007604D7 /* SwipeSplitViewController.m in Sources */,
-				E1084E78182F9A7900E60D1C /* AppleDocSet.m in Sources */,
+				E1084E78182F9A7900E60D1C /* Apple7DocSet.m in Sources */,
 				7F1D42C514D1624F00A85CB3 /* main.m in Sources */,
 				7F1D42F914D1632700A85CB3 /* archive.c in Sources */,
 				7F1D42FA14D1632700A85CB3 /* arcmod.c in Sources */,
@@ -833,7 +833,7 @@
 				7F1D430014D1632700A85CB3 /* err.c in Sources */,
 				7F1D430114D1632700A85CB3 /* ext2.c in Sources */,
 				7F1D430214D1632700A85CB3 /* fbsdattr.c in Sources */,
-				E178362E182E7890003FEE28 /* AppleDeprecatedDocSet.m in Sources */,
+				E178362E182E7890003FEE28 /* Apple6DocSet.m in Sources */,
 				7F1D430314D1632700A85CB3 /* filetree.c in Sources */,
 				7F1D430414D1632700A85CB3 /* hash.c in Sources */,
 				7F1D430514D1632700A85CB3 /* io.c in Sources */,

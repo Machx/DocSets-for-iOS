@@ -1,14 +1,14 @@
 //
-//  AppleDocSet.m
+//  Apple7DocSet.m
 //  DocSets
 //
 //  Created by Dennis Oberhoff on 10/11/13.
 //
 //
 
-#import "AppleDocSet.h"
+#import "Apple7DocSet.h"
 
-@implementation AppleDocSet
+@implementation Apple7DocSet
 
 - (NSURL *)URLForNode:(NSManagedObject *)node
 {
@@ -22,14 +22,16 @@
     return URL;
 }
 
--(NSString *)anchorForNode:(NSManagedObject*)node{
+-(NSString *)anchorForNode:(NSManagedObject*)node
+{
     
     NSManagedObject *pathNode = [self pathForNode:node];
     return [pathNode valueForKey:@"anchor"];
     
 }
 
--(NSManagedObject*)pathForNode:(NSManagedObject*)node{
+-(NSManagedObject*)pathForNode:(NSManagedObject*)node
+{
     
     NSString *nodeID = [node valueForKey:@"kID"];
     
@@ -67,7 +69,8 @@
     return self.iphoneCSS;
 }
 
--(NSString*)iphoneCSS{
+-(NSString*)iphoneCSS
+{
     
     return @"<style>html { -webkit-text-size-adjust: 100%; } #scrollable { overflow-y: auto; -webkit-overflow-scrolling: touch; } body { font-size: 13px; padding: 15px } pre { white-space: pre-wrap !important; } h1 {font-size: 17px !important;} h2 { font-size: 15px !important; } h3 { font-size: 13px !important; } html { font-family: Lucida Grande; } #pageTitle { text-align:center; } .pageNavigationLinks, .tooltip, .hideOnPrint, .copyright, #header, #feedbackForm , #xcode_leave_feedback{ display: none; } img{ max-width:100% ;height: auto; display: block;} #pageTitle { color : #000; } .jump{ margin-top: 1.75em; color: #3c4c6c; padding-bottom: 2px; } .ul{ list-style: disc outside; margin: 0 0 .833em 1.35em; padding: 0 0 .5em; display: block; list-style-type: disc; } a { color: rgba(51,102,204,1.0); text-decoration: none; } </style>";
     

@@ -1,5 +1,5 @@
 //
-//  AppleDocSet.h
+//  Apple7DocSet.h
 //  DocSets
 //
 //  Created by Dennis Oberhoff on 10/11/13.
@@ -8,6 +8,6 @@
 
 #import "GenericDocSet.h"
 
-@interface AppleDocSet : GenericDocSet
+@interface Apple7DocSet : GenericDocSet
 
 @end
