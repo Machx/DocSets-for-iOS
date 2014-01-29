@@ -37,8 +37,8 @@
 
 - (void)loadView
 {
-	[super loadView];
-	
+    UIView *contentView = [[UIView alloc] initWithFrame:[[UIScreen mainScreen] applicationFrame]];
+    
 	self.detailViewController.view.autoresizingMask = UIViewAutoresizingFlexibleHeight | UIViewAutoresizingFlexibleWidth;
 	self.masterViewController.view.autoresizingMask = UIViewAutoresizingFlexibleRightMargin | UIViewAutoresizingFlexibleHeight;
 	
@@ -49,26 +49,35 @@
 	self.detailViewController.view.layer.cornerRadius = 6.0;
 	self.detailViewController.view.clipsToBounds = YES;
 	
-	self.masterContainerView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"Shadow.png"]];
+    UIImage *image = [UIImage imageNamed:@"Shadow.png"];
+    image = [image resizableImageWithCapInsets:UIEdgeInsetsMake(0.2, 0.2, 0.6, 0.6)];
+    self.masterContainerView = [[UIImageView alloc] initWithImage:image];
 	_masterContainerView.userInteractionEnabled = YES;
-	_masterContainerView.contentStretch = CGRectMake(0.2, 0.2, 0.6, 0.6);
 	_masterContainerView.image = nil;
-	
-	[self layoutViewControllers];
-	
-	[self.view addSubview:self.detailViewController.view];
+		
+	[contentView addSubview:self.detailViewController.view];
 	self.masterViewController.view.frame = CGRectInset(_masterContainerView.bounds, 3, 3);
 	//self.masterViewController.view.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight;
 	[_masterContainerView addSubview:self.masterViewController.view];
-	[self.view addSubview:_masterContainerView];
+	[contentView addSubview:_masterContainerView];
 	
 	UISwipeGestureRecognizer *rightSwipeRecognizer = [[UISwipeGestureRecognizer alloc] initWithTarget:self action:@selector(rightSwipe:)];
 	rightSwipeRecognizer.direction = UISwipeGestureRecognizerDirectionRight;
 	[self.detailViewController.view addGestureRecognizer:rightSwipeRecognizer];
+    
+    self.view = contentView;
+}
+
+- (void)viewDidLoad {
+    [super viewDidLoad];
+    
+ 	[self layoutViewControllers];   
 }
 
 - (void)viewDidAppear:(BOOL)animated
 {
+    [super viewDidAppear:animated];
+    
 	if (UIInterfaceOrientationIsPortrait(self.interfaceOrientation)) {
 		[self showMasterViewControllerAnimated:YES];
 	}

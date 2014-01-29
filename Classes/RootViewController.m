@@ -88,7 +88,7 @@
 	DownloadViewController *vc = [[DownloadViewController alloc] initWithStyle:UITableViewStyleGrouped];
 	UINavigationController *navController = [[UINavigationController alloc] initWithRootViewController:vc];
 	navController.modalPresentationStyle = UIModalPresentationFormSheet;
-	[self presentModalViewController:navController animated:YES];
+    [self presentViewController:navController animated:YES completion:nil];
 }
 
 - (void)showInfo:(id)sender
@@ -99,7 +99,7 @@
 	if ([[UIDevice currentDevice] userInterfaceIdiom] == UIUserInterfaceIdiomPad) {
 		navController.modalPresentationStyle = UIModalPresentationFormSheet;
 	}
-	[self.view.window.rootViewController presentModalViewController:navController animated:YES];
+    [self.view.window.rootViewController presentViewController:navController animated:YES completion:nil];
 }
 
 - (void)docSetsChanged:(NSNotification *)notification

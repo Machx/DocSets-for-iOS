@@ -41,45 +41,73 @@
 	
 	backButtonItem = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"Back.png"] style:UIBarButtonItemStylePlain target:self action:@selector(goBack:)];
 	backButtonItem.enabled = NO;
-	forwardButtonItem = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"Forward.png"] style:UIBarButtonItemStylePlain target:self action:@selector(goForward:)];
-	forwardButtonItem.enabled = NO;
-	bookmarksButtonItem = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemBookmarks target:self action:@selector(showBookmarks:)];
-	bookmarksButtonItem.enabled = NO;
-	actionButtonItem = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemAction target:self action:@selector(showActions:)];
-	actionButtonItem.enabled = NO;
 	
+    forwardButtonItem = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"Forward.png"] style:UIBarButtonItemStylePlain target:self action:@selector(goForward:)];
+	forwardButtonItem.enabled = NO;
+	
+    bookmarksButtonItem = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemBookmarks target:self action:@selector(showBookmarks:)];
+	bookmarksButtonItem.enabled = NO;
+	
+    actionButtonItem = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemAction target:self action:@selector(showActions:)];
+	actionButtonItem.enabled = NO;
+
 	if ([[UIDevice currentDevice] userInterfaceIdiom] == UIUserInterfaceIdiomPad) {
 		UIBarButtonItem *browseButtonItem = [[UIBarButtonItem alloc] initWithTitle:NSLocalizedString(@"DocSets", nil) style:UIBarButtonItemStyleBordered target:self action:@selector(showLibrary:)];
 		UIBarButtonItem *spaceItem = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemFixedSpace target:nil action:nil];
 		spaceItem.width = 24.0;	
 		portraitToolbarItems = [NSArray arrayWithObjects:browseButtonItem, spaceItem, backButtonItem, spaceItem, forwardButtonItem, flexSpace, bookmarksButtonItem, spaceItem, actionButtonItem, spaceItem, outlineButtonItem, nil];
 		landscapeToolbarItems = [NSArray arrayWithObjects:backButtonItem, spaceItem, forwardButtonItem, flexSpace, bookmarksButtonItem, spaceItem, actionButtonItem, spaceItem, outlineButtonItem, nil];
+        
+        outlineButtonItem.imageInsets = UIEdgeInsetsMake(10.0f, 0.0f, -10.0f, 0.0f);
+        backButtonItem.imageInsets = UIEdgeInsetsMake(10.0f, 0.0f, -10.0f, 0.0f);
+        forwardButtonItem.imageInsets = UIEdgeInsetsMake(10.0f, 0.0f, -10.0f, 0.0f);
+        bookmarksButtonItem.imageInsets = UIEdgeInsetsMake(10.0f, 0.0f, -10.0f, 0.0f);
+        actionButtonItem.imageInsets = UIEdgeInsetsMake(10.0f, 0.0f, -10.0f, 0.0f);
+
 	}
+	
+    // The webView has to be initialized here because in iOS7 openURL:withAnchor: is called
+    // before loadView.
+	webView = [[UIWebView alloc] initWithFrame:CGRectZero];
+    webView.delegate = self;
     
-    // moved this because it was nil
-    
-    titleLabel = [[UILabel alloc] initWithFrame:CGRectMake(0, 0, 360, 34)];
+	return self;
+}
+
+- (void)viewDidAppear:(BOOL)animated
+{
+	if ([[UIDevice currentDevice] userInterfaceIdiom] == UIUserInterfaceIdiomPhone && self.navigationController.toolbarHidden) {
+		[self.navigationController setToolbarHidden:NO animated:animated];
+	}
+}
+
+- (void)loadView
+{
+    UIView *contentView = [[UIView alloc] initWithFrame:[[UIScreen mainScreen] applicationFrame]];
+                           
+	contentView.backgroundColor = [UIColor colorWithWhite:0.95 alpha:1.0];
+	
+	titleLabel = [[UILabel alloc] initWithFrame:CGRectMake(0, 0, 360, 34)];
 	titleLabel.textColor = [UIColor colorWithRed:0.443 green:0.471 blue:0.502 alpha:1.0];
 	titleLabel.shadowColor = [UIColor whiteColor];
 	titleLabel.shadowOffset = CGSizeMake(0, 1);
 	titleLabel.font = [UIFont boldSystemFontOfSize:17.0];
-	titleLabel.textAlignment = UITextAlignmentCenter;
+    titleLabel.textAlignment = NSTextAlignmentCenter;
 	titleLabel.backgroundColor = [UIColor clearColor];
 	titleLabel.autoresizingMask = UIViewAutoresizingFlexibleLeftMargin | UIViewAutoresizingFlexibleRightMargin;
 	
-	CGFloat topToolbarHeight = ([[UIDevice currentDevice] userInterfaceIdiom] == UIUserInterfaceIdiomPad) ? 44.0 : 0.0;
-	webView = [[UIWebView alloc] initWithFrame:CGRectMake(0, topToolbarHeight, self.view.bounds.size.width, self.view.bounds.size.height - topToolbarHeight)];
+	CGFloat topToolbarHeight = ([[UIDevice currentDevice] userInterfaceIdiom] == UIUserInterfaceIdiomPad) ? 64.0 : 0.0; //44.0 iOS6 original
+	webView.frame = CGRectMake(0, topToolbarHeight, contentView.bounds.size.width, contentView.bounds.size.height - topToolbarHeight);
 	webView.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight;
 	webView.scalesPageToFit = YES;//([[UIDevice currentDevice] userInterfaceIdiom] == UIUserInterfaceIdiomPad);
 	
-	webView.delegate = self;
-	[self.view addSubview:webView];
+	[contentView addSubview:webView];
 	
 	if ([[UIDevice currentDevice] userInterfaceIdiom] == UIUserInterfaceIdiomPad) {
-		toolbar = [[UIToolbar alloc] initWithFrame:CGRectMake(0, 0, self.view.bounds.size.width, topToolbarHeight)];
+		toolbar = [[UIToolbar alloc] initWithFrame:CGRectMake(0, 0, contentView.bounds.size.width, topToolbarHeight)];
 		toolbar.autoresizingMask = UIViewAutoresizingFlexibleWidth;
 		toolbar.items = UIInterfaceOrientationIsPortrait(self.interfaceOrientation) ? portraitToolbarItems : landscapeToolbarItems;
-		[self.view addSubview:toolbar];
+		[contentView addSubview:toolbar];
 		titleLabel.center = CGPointMake(toolbar.bounds.size.width * 0.5, toolbar.bounds.size.height * 0.5);
 		[toolbar addSubview:titleLabel];
 	} else {
@@ -93,24 +121,9 @@
 	coverView = [[UIView alloc] initWithFrame:webView.frame];
 	coverView.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"whitey.png"]];
 	coverView.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight;
-	[self.view addSubview:coverView];
-		
-	return self;
-}
-
-- (void)viewDidAppear:(BOOL)animated
-{
-	if ([[UIDevice currentDevice] userInterfaceIdiom] == UIUserInterfaceIdiomPhone && self.navigationController.toolbarHidden) {
-		[self.navigationController setToolbarHidden:NO animated:animated];
-	}
-}
-
-
-- (void)loadView
-{
-	[super loadView];
-	self.view.backgroundColor = [UIColor colorWithWhite:0.95 alpha:1.0];
-	
+	[contentView addSubview:coverView];
+    
+    self.view = contentView;
 }
 
 - (void)docSetWillBeDeleted:(NSNotification *)notification
@@ -203,13 +216,13 @@
 		outlinePopover = [[UIPopoverController alloc] initWithContentViewController:outlineViewController];
 		[outlinePopover presentPopoverFromBarButtonItem:sender permittedArrowDirections:UIPopoverArrowDirectionAny animated:YES];
 	} else {
-		[self presentModalViewController:outlineViewController animated:YES];
+        [self presentViewController:outlineViewController animated:YES completion:nil];
 	}
 }
 
 - (void)dismissOutline:(id)sender
 {
-	[self dismissModalViewControllerAnimated:YES];
+    [self dismissViewControllerAnimated:YES completion:nil];
 }
 
 - (void)showActions:(id)sender
@@ -285,7 +298,7 @@
 			bookmarksPopover = [[UIPopoverController alloc] initWithContentViewController:navController];
 			[bookmarksPopover presentPopoverFromBarButtonItem:sender permittedArrowDirections:UIPopoverArrowDirectionUp animated:YES];
 		} else {
-			[self presentModalViewController:navController animated:YES];
+            [self presentViewController:navController animated:YES completion:nil];
 		}
 	}
 }
@@ -325,7 +338,6 @@
 			URL = [NSURL URLWithString:relativeRedirectPath relativeToURL:URL];
 		}
 	}
-    
 	[self openURL:URL withAnchor:nodeAnchor];
 }
 
@@ -381,19 +393,18 @@
 	if ([[UIDevice currentDevice] userInterfaceIdiom] == UIUserInterfaceIdiomPad) {
 		[bookmarksPopover dismissPopoverAnimated:YES];
 	} else {
-		[self dismissModalViewControllerAnimated:YES];
+        [self dismissViewControllerAnimated:YES completion:nil];
 	}
 }
 
 - (void)openURL:(NSURL *)URL withAnchor:(NSString *)anchor
 {
-	if (anchor != nil) {
+	if (anchor) {
 		NSURL *URLWithAnchor = [NSURL URLWithString:[[URL absoluteString] stringByAppendingFormat:@"#%@", anchor]];
 		[webView loadRequest:[NSURLRequest requestWithURL:URLWithAnchor]];
 	} else {
 		[webView loadRequest:[NSURLRequest requestWithURL:URL]];
 	}
-    
 	[self updateBackForwardButtons];
 	if ([self.parentViewController isKindOfClass:[SwipeSplitViewController class]]) {
 		[(SwipeSplitViewController *)self.parentViewController hideMasterViewControllerAnimated:YES];
@@ -517,7 +528,7 @@
 
 - (NSString *)bookPathForURL:(NSURL *)URL
 {
-	//TODO: This should probably also be a method of GenericDocSet...
+	//TODO: This should probably also be a method of DocSet...
 	NSFileManager *fm = [NSFileManager defaultManager];
 	NSString *path = [URL path];
 	NSString *pathForBook = nil;

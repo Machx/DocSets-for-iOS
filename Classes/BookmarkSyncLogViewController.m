@@ -124,7 +124,7 @@
 		if (bookmarksData) {
 			[composer addAttachmentData:bookmarksData mimeType:@"application/x-plist" fileName:@"Bookmarks.plist"];
 		}
-		[self presentModalViewController:composer animated:YES];
+        [self presentViewController:composer animated:YES completion:nil];
 	} else {
 		[[[UIAlertView alloc] initWithTitle:NSLocalizedString(@"Cannot Send Mail", nil) 
 									message:NSLocalizedString(@"Your device is not configured for sending email. Please use the Settings app to set up an email account.", nil) 
@@ -136,7 +136,7 @@
 
 - (void)mailComposeController:(MFMailComposeViewController *)controller didFinishWithResult:(MFMailComposeResult)result error:(NSError *)error
 {
-	[controller dismissModalViewControllerAnimated:YES];
+    [controller dismissViewControllerAnimated:YES completion:nil];
 }
 
 #pragma mark -
