@@ -125,6 +125,7 @@
 		7FF70B5512AD15B7001FF09F /* Forward.png in Resources */ = {isa = PBXBuildFile; fileRef = 7FF70B5312AD15B7001FF09F /* Forward.png */; };
 		7FF70C1512AD3FB8001FF09F /* libz.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 7FF70C1412AD3FB8001FF09F /* libz.dylib */; };
 		E1084E78182F9A7900E60D1C /* Apple7DocSet.m in Sources */ = {isa = PBXBuildFile; fileRef = E1084E77182F9A7900E60D1C /* Apple7DocSet.m */; };
+		E11362481899B3E4005F73BE /* Podfile in Resources */ = {isa = PBXBuildFile; fileRef = E11362471899B3E4005F73BE /* Podfile */; };
 		E178362E182E7890003FEE28 /* Apple6DocSet.m in Sources */ = {isa = PBXBuildFile; fileRef = E178362D182E7890003FEE28 /* Apple6DocSet.m */; };
 		E1783635182F961B003FEE28 /* DocSet.m in Sources */ = {isa = PBXBuildFile; fileRef = E1783634182F961A003FEE28 /* DocSet.m */; };
 		E19D187818310BE00007D3B6 /* CocoaDocSet.m in Sources */ = {isa = PBXBuildFile; fileRef = E19D187718310BE00007D3B6 /* CocoaDocSet.m */; };
@@ -292,6 +293,7 @@
 		C456F0E62B4F4C2F8344629C /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		E1084E76182F9A7900E60D1C /* Apple7DocSet.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Apple7DocSet.h; sourceTree = "<group>"; };
 		E1084E77182F9A7900E60D1C /* Apple7DocSet.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Apple7DocSet.m; sourceTree = "<group>"; };
+		E11362471899B3E4005F73BE /* Podfile */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Podfile; sourceTree = "<group>"; };
 		E178362C182E7890003FEE28 /* Apple6DocSet.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Apple6DocSet.h; sourceTree = "<group>"; };
 		E178362D182E7890003FEE28 /* Apple6DocSet.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Apple6DocSet.m; sourceTree = "<group>"; };
 		E1783633182F961A003FEE28 /* DocSet.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DocSet.h; sourceTree = "<group>"; };
@@ -367,6 +369,7 @@
 		29B97317FDCFA39411CA2CEA /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				E11362471899B3E4005F73BE /* Podfile */,
 				7F1D42C814D1628400A85CB3 /* Info.plist */,
 				7F1D42C614D1627D00A85CB3 /* AvailableDocSets.plist */,
 				7FCAE4C212B70FC500F529FF /* Images */,
@@ -766,6 +769,7 @@
 				7FEFBF41156D3B0700C75316 /* BubbleRed.png in Resources */,
 				7FEFBF44156D52B400C75316 /* CloudLog.png in Resources */,
 				7FEFBF45156D52B400C75316 /* CloudLog@2x.png in Resources */,
+				E11362481899B3E4005F73BE /* Podfile in Resources */,
 				7F0BEE78156D75E4008D806F /* whitey.png in Resources */,
 				7F0BEE79156D75E4008D806F /* whitey@2x.png in Resources */,
 				7F97CFCF160CDDB800313B1D /* Default-568h@2x.png in Resources */,
